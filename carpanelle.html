@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azienda Agricola Le Carpanelle -Dario Presenti</title>
+<meta name="description" content="Azienda agricola a Arezzo: miele, olio e B&B.">
+<meta name="keywords" content="Azienda agricola arezzo, miele, pergine valdarno laterina, B&B">
+<meta name="author" content="Azienda Agricola Le Carpanelle">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.lecarpanelle.it/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Azienda Agricola a Laterina Pergine Valdarno Arezzo: miele, olio, ortaggi, B&B.">
+<meta property="og:description" content="Azienda Agricola a Laterina Pergine Valdarno Arezzo: miele, olio, ortaggi, B&B.">
+<meta property="og:url" content="https://www.lecarpanelle.it/">
+<meta property="og:site_name" content="Azienda Agricola Le Carpanelle">
+<meta property="og:image" content="immagini/logo.png">
+<meta property="og:locale" content="it_IT">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Azienda Agricola a Laterina Pergine Valdarno Arezzo: miele, olio, ortaggi, B&B.">
+<meta name="twitter:description" content="Azienda Agricola a Laterina Pergine Valdarno Arezzo: miele, olio, ortaggi, B&B.">
+<link rel="icon" type="image/png" href="immagini/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="cookie.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #f5f0e8;
+    --gold: #a07840;
+    --gold-light: #c9a96e;
+    --dark: #3F3F3F;
+    --text: #3a3228;
+    --muted: #7a6e60;
+    --white: #faf8f5;
+  }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+
+  /* PAGE SYSTEM */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* LANGUAGE SWITCHER — small, at end of nav */
+  .lang-switcher {
+    display: flex; align-items: center; gap: 0.3rem;
+    margin-left: 1.5rem;
+  }
+  .lang-btn {
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: white;
+    background: none; border: none; cursor: pointer; padding: 2px 3px;
+    transition: color 0.2s; line-height: 1;
+  }
+  .lang-btn.active, .lang-btn:hover { color: #f1dab9; }
+  .lang-sep { color: rgba(255,255,255,0.25); font-size: 0.6rem; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    transition: background 0.5s, backdrop-filter 0.5s;
+  }
+  nav.scrolled { background: rgba(30,26,20,0.3); backdrop-filter: blur(1px);  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600;
+    letter-spacing: 0.08em; color: #fff; text-decoration: none; line-height: 1.2;
+    cursor: pointer;
+  }
+  .nav-logo span { display: block; font-size: 0.6rem; font-family: 'Jost', sans-serif; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; }
+  .nav-right { display: flex; align-items: center; gap: 0; }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.73rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.2s; cursor: pointer;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-book {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--dark); background: var(--gold-light); padding: 0.6rem 1.4rem;
+    text-decoration: none; transition: background 0.2s; cursor: pointer; margin-left: 1.5rem;
+  }
+  .nav-book:hover { background: var(--gold); color: #fff; }
+
+  /* HERO SLIDER */
+  .hero { position: relative; height: 100vh; min-height: 600px; overflow: hidden; }
+  .slide {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover; background-position: center;
+    opacity: 0; transition: opacity 2s cubic-bezier(0.4,0,0.2,1);
+  }
+  .slide.active { opacity: 1; }
+  .slide::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.52) 100%);
+  }
+  .slide-1 { background-image: url('immagini/slide1.jpg'); }
+  .slide-2 { background-image: url('immagini/slide2.jpg'); }
+  .slide-3 { background-image: url('immagini/slide3.jpg'); }
+
+  .hero-content {
+    position: relative; z-index: 2; height: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 0 2rem;
+    animation: fadeUp 1.6s ease both;
+  }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+  .hero-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: #f1dab9; margin-bottom: 1.2rem; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 300; line-height: 1.05; color: #fff; margin-bottom: 1rem; }
+  .hero-title em { font-style: italic; color: #f1dab9; }
+  .hero-sub { font-size: 1rem; font-weight: 300; letter-spacing: 0.1em; color: rgba(255,255,255,0.82); margin-bottom: 2.5rem; }
+  .hero-cta {
+    display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; color: #fff; border: 1px solid rgba(255,255,255,0.6);
+    padding: 0.9rem 2.4rem; text-decoration: none; transition: background 0.3s, border-color 0.3s; cursor: pointer;
+  }
+  .hero-cta:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+  .hero-dots { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; gap: 10px; }
+  .dot { width: 28px; height: 2px; background: rgba(255,255,255,0.38); cursor: pointer; transition: background 0.4s; }
+  .dot.active { background: var(--gold-light); }
+
+  /* INTRO */
+  .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 70vh; }
+  .intro-text { background: var(--cream); padding: 6rem 5rem; display: flex; flex-direction: column; justify-content: center; }
+  .section-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 3.5vw, 3.4rem); font-weight: 300; line-height: 1.2; color: var(--dark); margin-bottom: 1.8rem; }
+  .section-title em { font-style: italic; }
+  .section-body { font-size: 0.98rem; font-weight: 300; line-height: 1.9; color: var(--muted); max-width: 46ch; }
+  .divider { width: 3rem; height: 1px; background: var(--gold); margin: 2rem 0; }
+  .intro-image {
+    background-image: url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=1200&q=80');
+    background-size: cover; background-position: center; min-height: 500px;
+  }
+
+  /* SERVICES */
+  .services { padding: 6rem 3rem; background: var(--white); }
+  .services-header { text-align: center; margin-bottom: 4rem; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    max-width: 1200px; margin: 0 auto; border: 1px solid #e5ddd0;
+  }
+  .service-card { position: relative; overflow: hidden; aspect-ratio: 3/4; min-height: 320px; cursor: pointer; }
+  .service-card:not(:last-child) { border-right: 1px solid #e5ddd0; }
+  .service-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-size: cover; background-position: center; transition: transform 0.7s ease; }
+  .service-card:hover .service-bg { transform: scale(1.06); }
+  .service-bg::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to top, rgba(20,15,8,0.78) 0%, rgba(20,15,8,0.1) 60%);
+    transition: background 0.4s;
+  }
+  .service-card:hover .service-bg::after { background: linear-gradient(to top, rgba(20,15,8,0.88) 0%, rgba(20,15,8,0.28) 60%); }
+  .olive-bg  { background-image: url('https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=900&q=80'); }
+  .honey-bg  { background-image: url('https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=900&q=80'); }
+  .rooms-bg  { background-image: url('immagini/B&BClaudia.jpg'); }
+  .service-content { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; padding: 2.5rem 2rem; }
+  .service-number { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.3em; color: var(--gold-light); margin-bottom: 0.6rem; }
+  .service-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+  .service-desc {
+    font-size: 0.85rem; font-weight: 300; color: rgba(255,255,255,0.82); line-height: 1.7;
+    max-height: 0; overflow: hidden; transition: max-height 0.45s ease, opacity 0.4s; opacity: 0;
+  }
+  .service-card:hover .service-desc { max-height: 110px; opacity: 1; }
+  .service-link {
+    display: inline-block; margin-top: 1rem; font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light);
+    text-decoration: none; border-bottom: 1px solid var(--gold-light); padding-bottom: 2px;
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease 0.1s, opacity 0.4s; opacity: 0;
+    cursor: pointer;
+  }
+  .service-card:hover .service-link { max-height: 40px; opacity: 1; }
+
+  /* REVIEWS */
+  .reviews { padding: 6rem 3rem; background: var(--cream); }
+  .reviews-header { text-align: center; margin-bottom: 3.5rem; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1100px; margin: 0 auto 3rem; }
+  .review-card {
+    background: var(--white); padding: 2rem 1.8rem;
+    border: 1px solid #e5ddd0; position: relative;
+  }
+  .review-stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; margin-bottom: 1rem; }
+  .review-text { font-size: 0.92rem; font-weight: 300; line-height: 1.8; color: var(--muted); font-style: italic; margin-bottom: 1.4rem; }
+  .review-author { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); }
+  .review-source { font-size: 0.7rem; color: var(--gold); font-weight: 400; margin-top: 2px; }
+  .review-quote { position: absolute; top: 1.2rem; right: 1.5rem; font-family: 'Cormorant Garamond', serif; font-size: 4rem; color: var(--cream); line-height: 1; pointer-events: none; }
+  .reviews-cta { text-align: center; }
+  .reviews-cta a {
+    display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold);
+    padding: 0.8rem 2rem; text-decoration: none; transition: background 0.3s, color 0.3s; margin: 0 0.5rem;
+  }
+  .reviews-cta a:hover { background: var(--gold); color: #fff; }
+
+  /* B&B SECTION */
+  .bb-section { display: grid; grid-template-columns: 1fr 1fr; min-height: 65vh; }
+  .bb-image {
+    background-image: url('immagini/B&BClaudia_1.jpg');
+    background-size: cover; background-position: center; min-height: 460px;
+  }
+  .bb-text { background: var(--dark); padding: 6rem 5rem; display: flex; flex-direction: column; justify-content: center; }
+  .bb-text .section-label { color: var(--gold-light); }
+  .bb-text .section-title { color: #fff; }
+  .bb-text .section-body { color: rgba(255,255,255,0.68); }
+  .bb-text .divider { background: var(--gold-light); }
+  .bb-amenities { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .bb-tag {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold-light); border: 1px solid rgba(201,169,110,0.4);
+    padding: 0.4rem 0.9rem;
+  }
+  .bb-book {
+    display: inline-block; margin-top: 2rem; align-self: flex-start;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--dark); background: var(--gold-light); padding: 0.85rem 2rem;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .bb-book:hover { background: var(--gold); color: #fff; cursor: pointer;}
+
+
+  /* ========== FOOTER — Poggio-style ========== */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.65);
+    font-size: 0.86rem;
+    font-weight: 300;
+  }
+
+  /* Top bar: social icons left, brand centered */
+  .footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 3rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-social-top {
+    display: flex; gap: 0.8rem; align-items: center;
+  }
+  .footer-social-top a {
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .footer-social-top a:hover { border-color: var(--gold-light); color: var(--gold-light); }
+  .footer-social-top svg { width: 16px; height: 16px; fill: currentColor; }
+  .footer-brand-center {
+    text-align: center;
+    flex: 1;
+  }
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.08em;
+    display: block;
+  }
+  .footer-brand-sub {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-top: 0.2rem;
+    display: block;
+  }
+
+  /* Three columns */
+  .footer-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-col {
+    padding: 2.5rem 3rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-col:last-child { border-right: none; }
+  .footer-col h4 {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.2rem;
+  }
+  .footer-col p, .footer-col a {
+    color: rgba(255,255,255,0.62);
+    line-height: 2;
+    text-decoration: none;
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 300;
+  }
+  .footer-col a:hover { color: var(--gold-light); }
+  .footer-col .footer-nav-links a {
+    line-height: 2.1;
+  }
+
+  /* Bottom bar */
+  .footer-bottom {
+    padding: 1.2rem 3rem;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.28);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .footer-bottom a { color: rgba(255,255,255,0.28); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--gold-light); }
+
+  /* ========== CONTATTI PAGE ========== */
+  .contatti-hero {
+    height: 100vh; min-height: 600px;
+    background-image: url('immagini/cartelLecarpanelleantiguo.jpg');
+    background-size: cover; background-position: center;
+    position: relative; display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    animation: fadeUp 1.6s ease both;
+  }
+  .contatti-hero::after { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%); }
+  .contatti-hero-text { position: relative; z-index: 1; padding: 0 2rem; }
+  .contatti-hero-text .section-label { color: var(--gold-light); }
+  .contatti-hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300; color: #fff; line-height: 1.05; margin-top: 0.5rem;
+  }
+  .contatti-hero-text h1 em { font-style: italic; color: var(--gold-light); }
+
+  .contatti-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 60vh;
+  }
+  .contatti-info {
+    background: var(--cream);
+    padding: 5rem 5rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .contatti-info h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 300; color: var(--dark);
+    margin-bottom: 0.5rem;
+  }
+  .contatti-info h2 em { font-style: italic; }
+  .contatti-info .lead {
+    font-size: 0.95rem; color: var(--muted); line-height: 1.8;
+    margin-bottom: 2.5rem; font-weight: 300;
+  }
+  .contatti-cards {
+    display: flex; flex-direction: column; gap: 1.2rem;
+  }
+  .contatti-card {
+    display: flex; align-items: flex-start; gap: 1.2rem;
+    background: #fff; border: 1px solid #e5ddd0;
+    padding: 1.4rem 1.6rem;
+  }
+  .contatti-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: var(--gold); display: flex; align-items: center; justify-content: center;
+  }
+  .contatti-icon svg { width: 18px; height: 18px; fill: #fff; }
+  .contatti-card-body { }
+  .contatti-card-label {
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem;
+  }
+  .contatti-card-value {
+    font-size: 0.92rem; color: var(--text); font-weight: 300; line-height: 1.6;
+  }
+  .contatti-card-value a { color: var(--text); text-decoration: none; }
+  .contatti-card-value a:hover { color: var(--gold); }
+
+  .contatti-cta-box {
+    margin-top: 2rem;
+    background: var(--dark);
+    padding: 1.8rem 2rem;
+    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .contatti-cta-box p {
+    flex: 1; font-size: 0.88rem; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.6;
+  }
+  .contatti-cta-box p strong { color: #fff; }
+  .contatti-wa-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--dark); background: var(--gold-light); padding: 0.85rem 1.6rem;
+    text-decoration: none; transition: background 0.2s; white-space: nowrap;
+  }
+  .contatti-wa-btn:hover { background: var(--gold); color: #fff; }
+  .contatti-wa-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+  .contatti-map {
+    position: relative;
+  }
+  .contatti-map iframe {
+    width: 100%; height: 100%; min-height: 500px;
+    border: 0; filter: grayscale(20%) contrast(1.05);
+    display: block;
+  }
+
+  /* ========== B&B CLAUDIA PAGE ========== */
+  .bb-page-hero {
+    height: 100vh; min-height: 600px;
+    background-image: url('immagini/B&BClaudia.jpg');
+    background-size: cover; background-position: center;
+    position: relative; display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    animation: fadeUp 1.6s ease both;
+  }
+  .bb-page-hero::after { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%); }
+  .bb-page-hero-text { position: relative; z-index: 1; padding: 0 2rem; }
+  .bb-page-hero-text .section-label { color: var(--gold-light); }
+  .bb-page-hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300; color: #fff; line-height: 1.05; margin-top: 0.5rem;
+  }
+  .bb-page-hero-text h1 em { font-style: italic; color: var(--gold-light); }
+  .bb-page-hero-text p {
+    font-size: 1rem; color: rgba(255,255,255,0.82); font-weight: 300;
+    letter-spacing: 0.1em; margin-top: 1rem;
+  }
+
+  /* BB intro block */
+  .bb-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 55vh; }
+  .bb-intro-text {
+    background: var(--cream); padding: 5rem 5rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .bb-intro-image {
+    background-image: url('immagini/bb-intro-image.jpg');
+    background-size: cover; background-position: center; min-height: 420px;
+  }
+
+  /* BB amenities full width */
+  .bb-amenities-section {
+    padding: 5rem 3rem;
+    background: var(--white);
+  }
+  .bb-amenities-section .services-header { margin-bottom: 3rem; }
+  .bb-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .bb-feature {
+    border: 1px solid #e5ddd0;
+    padding: 2rem 1.8rem;
+    background: var(--cream);
+  }
+  .bb-feature-icon {
+    font-size: 1.8rem; margin-bottom: 1rem; color: var(--gold);
+  }
+  .bb-feature h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 400; color: var(--dark);
+    margin-bottom: 0.6rem;
+  }
+  .bb-feature p {
+    font-size: 0.88rem; font-weight: 300; color: var(--muted); line-height: 1.75;
+  }
+
+  /* BB gallery strip */
+  .bb-gallery {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    height: 380px;
+  }
+  .bb-gal-img {
+    background-size: cover; background-position: center;
+    min-height: 200px;
+  }
+  .bb-gal-1 { background-image: url('immagini/bb-gal-1.jpg'); }
+  .bb-gal-2 { background-image: url('immagini/galleria/Claudia-B&B_4.jpg'); }
+  .bb-gal-3 { background-image: url('immagini/bb-gal-3.jpg'); }
+
+  /* BB pricing / CTA block */
+  .bb-cta-section {
+    background: var(--dark);
+    padding: 5rem 3rem;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  .bb-cta-section .section-label { color: var(--gold-light); }
+  .bb-cta-section .section-title { color: #fff; max-width: 16ch; margin: 0.5rem auto 1.5rem; }
+  .bb-cta-section .section-body { color: rgba(255,255,255,0.65); max-width: 50ch; margin: 0 auto; }
+  .bb-cta-section .divider { margin: 1.5rem auto; }
+  .bb-cta-btns { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center; }
+  .btn-gold {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--dark); background: var(--gold-light); padding: 0.9rem 2.2rem;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .btn-gold:hover { background: var(--gold); color: #fff; }
+  .btn-outline {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.4);
+    padding: 0.9rem 2.2rem; text-decoration: none; transition: border-color 0.2s, color 0.2s; cursor: pointer;
+  }
+  .btn-outline:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+  /* Massage split — inside bb-amenities-section, full width of the section */
+  .massage-section {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    margin-top: 3rem; max-width: 1100px; margin-left: auto; margin-right: auto;
+    border: 1px solid #e5ddd0;
+  }
+  .massage-image {
+    background-image: url('immagini/massage.jpg');
+    background-size: cover; background-position: center; min-height: 300px;
+  }
+  .massage-text {
+    background: var(--cream); padding: 3rem 3.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .massage-text .section-title { font-size: clamp(1.6rem, 2.5vw, 2.4rem); margin-bottom: 1rem; }
+
+  /* ========== PP PRIVACY PAGE ========== */
+  .pp-page-hero {
+    height: 80vh; min-height: 350px;
+    background-image: url('immagini/galleria/vista_giardino.jpg');
+    background-size: cover; background-position: center;
+    position: relative; display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    animation: fadeUp 1.6s ease both;
+  }
+  .pp-page-hero::after { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%); }
+
+  /* fine PP */
+
+  /* ========== GG  GALLERY  PAGE ========== */
+  .gg-page-hero {
+    height: 80vh; min-height: 350px;
+    background-image: url('immagini/galleria/vista_giardino.jpg');
+    background-size: cover; background-position: center;
+    position: relative; display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    animation: fadeUp 1.6s ease both;
+  }
+  .gg-page-hero::after { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%); }
+
+  /* fine GG */
+
+  /* ===== HAMBURGER MENU ===== */
+  .nav-hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    padding: 4px; margin-left: 1rem; background: none; border: none;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 2px;
+    background: #fff; border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile nav drawer */
+  .mobile-nav-drawer {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(45,38,30,0.97); z-index: 99;
+    flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  }
+  .mobile-nav-drawer.open { display: flex; }
+  .mobile-nav-drawer a, .mobile-nav-drawer span {
+    font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300;
+    color: #fff; text-decoration: none; letter-spacing: 0.05em; cursor: pointer;
+    transition: color 0.2s;
+  }
+  .mobile-nav-drawer a:hover, .mobile-nav-drawer span:hover { color: var(--gold-light); }
+  .mobile-nav-drawer em { font-style: italic; color: var(--gold-light); }
+  .mobile-nav-close {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; line-height: 1;
+  }
+  .mobile-lang-switcher { display: flex; gap: 0.8rem; align-items: center; margin-top: 1rem; }
+  .mobile-lang-switcher button {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); background: none; border: none; cursor: pointer; padding: 4px 6px;
+  }
+  .mobile-lang-switcher button.active { color: var(--gold-light); }
+  .mobile-lang-switcher span { color: rgba(255,255,255,0.25); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .nav-book { display: none; }
+    .lang-switcher { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .intro { grid-template-columns: 1fr; }
+    .intro-image { min-height: 300px; order: -1; }
+    .intro-text { padding: 3.5rem 1.8rem; }
+
+    .services { padding: 3.5rem 1.2rem; }
+    .services-grid { grid-template-columns: 1fr; border: none; gap: 1.5rem; }
+    .service-card { border-right: none !important; border: 1px solid #e5ddd0; aspect-ratio: 4/3; min-height: 260px; }
+    .service-desc, .service-link { max-height: 100px !important; opacity: 1 !important; }
+
+    .reviews { padding: 3.5rem 1.2rem; }
+    .reviews-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+
+    .bb-section { grid-template-columns: 1fr; }
+    .bb-text { padding: 3.5rem 1.8rem; }
+
+    .footer-cols { grid-template-columns: 1fr; }
+    .footer-col { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 2rem 1.8rem; }
+    .footer-top { padding: 1.5rem 1.8rem; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom { padding: 1rem 1.5rem; font-size: 0.65rem; }
+
+    .contatti-main { grid-template-columns: 1fr; }
+    .contatti-info { padding: 3rem 1.8rem; }
+    .contatti-map iframe { min-height: 320px; }
+
+    .bb-intro { grid-template-columns: 1fr; }
+    .bb-intro-text { padding: 3.5rem 1.8rem; }
+    .bb-features-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+    .bb-gallery { grid-template-columns: 1fr; height: auto; }
+    .bb-gal-img { min-height: 220px; }
+
+    .massage-section { grid-template-columns: 1fr; }
+    .massage-image { min-height: 220px; }
+    .massage-text { padding: 2.5rem 1.8rem; }
+  }
+  /* Nasconde il menu SOLO quando la pagina ha la classe .active */
+  body:has(#page-pp.active) .nav-right {
+      display: none !important;
+  }
+
+
+  /* --- Estilos de la pagina Gallería --- */
+
+  .gallery-grid h3 {
+  display: none;
+  }
+
+  /* Contenedor Principal (Grid) */
+  .gallery-grid {
+    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                    grid-auto-flow: dense; /* ¡Clave! Rellena los huecos automáticamente */
+                    gap: 0.5rem; /* espacios entre celdas */
+                    padding-bottom: 5rem;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    width: 100%;
+                    align-items: stretch;
+  }
+
+
+
+  /* Tarjeta Base (Común a todas) */
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    width: 100%;
+  }
+
+  /* Imagen de fondo (Evita estiramiento) */
+  .gallery-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Cubre el espacio sin deformar */
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease;
+  }
+
+  /* Efecto Zoom suave al pasar el mouse (opcional) */
+  .gallery-item:hover .gallery-bg {
+    transform: scale(1.05);
+  }
+
+  /* Texto superpuesto */
+  .gallery-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    z-index: 2;
+    margin: 0;
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    pointer-events: none; /* El mouse pasa a través del texto */
+  }
+
+  /* --- Clases de Tamaño (Span) --- */
+
+  /* Ancho normal (1 columna) */
+  .gallery-item.span-1 {
+    grid-column: auto;
+    aspect-ratio: 16 / 9;
+    min-height: 150px;
+  }
+
+  /* Doble ancho (2 columnas) */
+  .gallery-item.span-2 {
+    grid-column: span 2;
+    aspect-ratio: 21 / 9;
+    min-height: 120px;
+  }
+
+  /* Triple ancho (3 columnas) */
+  .gallery-item.span-3 {
+    grid-column: span 3;
+    aspect-ratio: 21 / 9;
+    min-height: 120px;
+  }
+
+  /* Ajuste para móviles (hacer todo 1 columna si la pantalla es muy pequeña) */
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: 1fr; /* 1 sola columna */
+    }
+    .gallery-item.span-1,
+    .gallery-item.span-2,
+    .gallery-item.span-3 {
+      grid-column: auto !important; /* Ignorar spans en móvil */
+      aspect-ratio: 16 / 9; /* Tamaño uniforme */
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV (shared across all pages) -->
+<nav id="nav">
+  <a class="nav-logo" onclick="showPage('home')">
+    Le Carpanelle
+    <span data-it="Azienda Agricola · Dario PRESENTI" data-en="Farm Estate · Dario PRESENTI">Farm Estate · Dario PRESENTI</span>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a onclick="showPage('home'); scrollToSection('servizi')" data-it="I Nostri Prodotti" data-en="Our Products">Our Products</a></li>
+      <li><a onclick="showPage('bb-page')" data-it="Claudia B&B" data-en="Claudia B&B">Claudia B&B</a></li>
+      <li><a onclick="showPage('gallery')" data-it="Galleria" data-en="Gallery">Gallery</a></li>
+    </ul>
+    <a onclick="showPage('contatti')" class="nav-book" data-it="Contattaci" data-en="Book Now">Book Now</a>
+    <div class="lang-switcher">
+      <button class="lang-btn" id="btn-it" onclick="setLang('it')">ITA</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">ENG</button>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav-drawer" id="mobile-drawer">
+  <button class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close">✕</button>
+  <a onclick="showPage('home'); toggleMobileNav()" data-it="Home" data-en="Home">Home</a>
+  <a onclick="showPage('home'); scrollToSection('servizi'); toggleMobileNav()" data-it="I Nostri Prodotti" data-en="Our Products">Our Products</a>
+  <a onclick="showPage('bb-page'); toggleMobileNav()">B&amp;B <em>Claudia</em></a>
+  <a onclick="showPage('gallery'); toggleMobileNav()" data-it="Galleria" data-en="Gallery">Gallery</a>
+  <a onclick="showPage('contatti'); toggleMobileNav()" data-it="Contattaci" data-en="Contact">Contact</a>
+  <div class="mobile-lang-switcher">
+    <button id="mbtn-it" onclick="setLang('it'); document.getElementById('mbtn-it').classList.add('active'); document.getElementById('mbtn-en').classList.remove('active');">ITA</button>
+    <span>|</span>
+    <button id="mbtn-en" class="active" onclick="setLang('en'); document.getElementById('mbtn-en').classList.add('active'); document.getElementById('mbtn-it').classList.remove('active');">ENG</button>
+  </div>
+</div>
+
+<!-- ===================== HOME PAGE ===================== -->
+<div class="page active" id="page-home">
+
+<!-- HERO SLIDER -->
+<section class="hero">
+  <div class="slide slide-1 active"></div>
+  <div class="slide slide-2"></div>
+  <div class="slide slide-3"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-it="Laterina Pergine Valdarno · Arezzo · Toscana" data-en="Laterina Pergine Valdarno · Arezzo · Tuscany">Laterina Pergine Valdarno · Arezzo · Tuscany</p>
+    <h1 class="hero-title">Le <em>Carpanelle</em></h1>
+    <p class="hero-sub" data-it="Olio, Miele, Ortaggi ed Ospitalità nel cuore del Valdarno" data-en="Olive Oil, Honey, Vegetables & Hospitality in the heart of the Valdarno">Olive Oil, Honey &amp; Hospitality in the heart of the Valdarno</p>
+    <span class="hero-cta" onclick="scrollToSection('benvenuto')" data-it="Scopri di più" data-en="Discover more">Discover more</span>
+  </div>
+  <div class="hero-dots">
+    <div class="dot active" onclick="goSlide(0)"></div>
+    <div class="dot" onclick="goSlide(1)"></div>
+    <div class="dot" onclick="goSlide(2)"></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="benvenuto">
+  <div class="intro-text">
+    <p class="section-label" data-it="Benvenuti" data-en="Welcome">Welcome</p>
+    <h2 class="section-title" data-it="Un angolo di <em>Toscana</em><br>autentica" data-en="A corner of <em>authentic</em><br>Tuscany">A corner of <em>authentic</em><br>Tuscany</h2>
+    <div class="divider"></div>
+    <p class="section-body" data-it="L'Azienda Agricola Le Carpanelle sorge sulle colline di Laterina Pergine Valdarno, in provincia di Arezzo. Con passione e rispetto per la tradizione, produciamo olio extravergine d'oliva, miele artigianale ed ortaggi. Disponiamo di due camere nel Claudia B&B ed un servizio per massaggi corpo." data-en="Az. Agricola Le Carpanelle is nestled in the hills of Laterina Pergine Valdarno, in the province of Arezzo. With passion and respect for tradition, we produce extra virgin olive oil, artisan honey and vegetables. Welcome guests at Claudia B&B.">Az. Agricola Le Carpanelle is nestled in the hills of Laterina Pergine Valdarno, in the province of Arezzo. With passion and respect for tradition, we produce extra virgin olive oil, artisan honey and vegetables. Welcome guests at B&amp;B Claudia.</p>
+    <div class="divider"></div>
+    <p class="section-body" data-it="Ogni prodotto nasce dall'amore per questa terra: l'olio porta con sé i profumi degli ulivi del Valdarno, il miele raccoglie i fiori selvatici delle nostre colline. Amiamo la stagionalità e da noi tutti gli ortaggi sono di nostra produzione. Disponiamo inoltre di due comode camere matrimoniali e offriamo massaggi rilassanti direttamente in struttura!" data-en="Every product is born from love for this land: our olive oil carries the scent of ancient Valdarno olive trees, while our honey gathers wild flowers from the surrounding hills. We embrace seasonality — all vegetables are homegrown. We also offer two comfortable double rooms and relaxing massages on site.">Every product is born from love for this land: our olive oil carries the scent of ancient Valdarno olive trees, while our honey gathers wild flowers from the surrounding hills. We embrace seasonality — all vegetables are homegrown. We also offer two comfortable double rooms and relaxing massages on site.</p>
+  </div>
+  <div class="intro-image" role="img" aria-label="Valdarno hills"></div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servizi">
+  <div class="services-header">
+    <p class="section-label" data-it="I Nostri Prodotti e Servizi" data-en="Our Products & Services">Our Products &amp; Services</p>
+    <h2 class="section-title" style="font-size: clamp(2rem,3vw,3rem);" data-it="Dalla terra alla <em>tavola</em> ed un ambiente <em>ospitale!</em>" data-en="From the land to <em>the table</em> and <em>hospitality</em>">From the land to <em>the table</em> and <em>hospitality</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-bg olive-bg"></div>
+      <div class="service-content">
+        <p class="service-number">01</p>
+        <h3 class="service-name" data-it="Olio &amp; Ortaggi" data-en="Extra Virgin Olive Oil &amp; Vegetables">Extra Virgin Olive Oil &amp; Vegetables</h3>
+        <p class="service-desc" data-it="Il nostro olio extravergine è prodotto con le olive dei nostri uliveti. Raccolta manuale, spremitura a freddo, sapore intenso e fruttato con note erbacee tipiche della Toscana. E gli ortaggi del nostro campo, conditi con questo meraviglioso olio extravergine!" data-en="From our own Valdarno olive groves. Hand-picked, cold-pressed — intense and fruity, with the herbaceous notes of Tuscan tradition. Paired with fresh vegetables straight from our garden.">From our own Valdarno olive groves. Hand-picked, cold-pressed — intense and fruity, with the herbaceous notes of Tuscan tradition. Paired with fresh vegetables straight from our garden.</p>
+        <span class="service-link" onclick="showPage('contatti')" data-it="Contattaci →" data-en="Contact us →">Contact us →</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-bg honey-bg"></div>
+      <div class="service-content">
+        <p class="service-number">02</p>
+        <h3 class="service-name" data-it="Miele Artigianale" data-en="Artisan Honey">Artisan Honey</h3>
+        <p class="service-desc" data-it="Le nostre api raccolgono il nettare dai fiori selvatici del Valdarno. Produciamo miele millefiori, di acacia e di castagno, lavorato secondo metodi tradizionali." data-en="Our bees gather nectar from the wild flowers of the Valdarno. We produce wildflower, acacia and sunflower honey, crafted using traditional methods.">Our bees gather nectar from the wild flowers of the Valdarno. We produce wildflower, acacia and sunflower honey, crafted using traditional methods.</p>
+        <span class="service-link" onclick="showPage('contatti')" data-it="Contattaci →" data-en="Contact us →">Contact us →</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-bg rooms-bg"></div>
+      <div class="service-content">
+        <p class="service-number">03</p>
+        <h3 class="service-name" data-it="Claudia B&amp;B" data-en="Claudia B&amp;B">Claudia B&amp;B Claudia</h3>
+        <p class="service-desc" data-it="Due camere accoglienti immerse nel verde del Valdarno. Colazione con i nostri prodotti, silenzio e aria pulita. Coccólati con un massaggio rilassante di Claudia, direttamente in struttura." data-en="Two cosy rooms surrounded by the green Valdarno countryside. Breakfast with our own produce, peace and fresh air. Treat yourself to a relaxing massage with Claudia — right here on site.">Two cosy rooms surrounded by the green Valdarno countryside. Breakfast with our own produce, peace and fresh air. Treat yourself to a relaxing massage with Claudia — right here on site.</p>
+        <span class="service-link" onclick="showPage('bb-page')" data-it="Scopri il B&B →" data-en="Discover B&B →">Discover B&B →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="recensioni">
+  <div class="reviews-header">
+    <p class="section-label" data-it="Cosa dicono di noi" data-en="What our guests say">What our guests say</p>
+    <h2 class="section-title" style="font-size: clamp(2rem,3vw,3rem); text-align:center;" data-it="Le loro <em>esperienze</em>" data-en="Their <em>experiences</em>">Their <em>experiences</em></h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text" data-it="Posto meraviglioso, immerso nel verde. Claudia è stata un'ospite straordinaria, gentile e attenta a ogni dettaglio. Il miele e l'olio che abbiamo acquistato erano eccezionali." data-en="A wonderful place, surrounded by greenery. Claudia was an extraordinary host, kind and attentive to every detail. The honey and olive oil we bought were exceptional.">A wonderful place, surrounded by greenery. Claudia was an extraordinary host, kind and attentive to every detail. The honey and olive oil we bought were exceptional.</p>
+      <p class="review-author">Marco R.</p>
+      <p class="review-source">Google</p>
+    </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text" data-it="Un'esperienza autentica nella campagna toscana. La colazione con prodotti locali è stata deliziosa, e il panorama sul Valdarno indimenticabile. Torneremo sicuramente!" data-en="An authentic experience in the Tuscan countryside. Breakfast with local produce was delicious, and the views over the Valdarno were unforgettable. We will definitely be back!">An authentic experience in the Tuscan countryside. Breakfast with local produce was delicious, and the views over the Valdarno were unforgettable. We will definitely be back!</p>
+      <p class="review-author">Sophie L.</p>
+      <p class="review-source">Facebook</p>
+    </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text" data-it="Accoglienza calorosa, camera pulita e confortevole. I prodotti dell'azienda sono di altissima qualità. Consiglio a tutti di visitare Le Carpanelle!" data-en="Warm welcome, clean and comfortable room. The farm's products are of the highest quality. I would recommend everyone to visit Le Carpanelle!">Warm welcome, clean and comfortable room. The farm's products are of the highest quality. I would recommend everyone to visit Le Carpanelle!</p>
+      <p class="review-author">Giulia T.</p>
+      <p class="review-source">Google</p>
+    </div>
+  </div>
+  <div class="reviews-cta">
+    <a href="https://www.google.com/maps/place/Claudia+B%26B" target="_blank" rel="noopener" data-it="Leggi su Google" data-en="Read on Google">Read on Google</a>
+    <a href="https://www.facebook.com/profile.php?id=100054376487585" target="_blank" rel="noopener" data-it="Leggi su Facebook" data-en="Read on Facebook">Read on Facebook</a>
+  </div>
+</section>
+</div><!-- end page-home -->
+
+<!-- ===================== CONTATTI PAGE ===================== -->
+<div class="page" id="page-contatti">
+
+  <!-- Hero — full viewport, nav overlays -->
+  <div class="contatti-hero">
+    <div class="contatti-hero-text">
+      <p class="section-label" data-it="Dove siamo" data-en="Find us">Find us</p>
+      <h1 data-it="<em>Contatti</em> e Mappa" data-en="<em>Contact</em> & Map"><em>Contact</em> &amp; Map</h1>
+    </div>
+  </div>
+
+  <!-- Main: info left, map right -->
+  <div class="contatti-main">
+    <div class="contatti-info">
+      <p class="section-label" data-it="Informazioni Utili" data-en="Useful Information">Useful Information</p>
+      <h2 data-it="Siamo qui <em>per voi</em>" data-en="We are here <em>for you</em>">We are here <em>for you</em></h2>
+      <p class="lead" data-it="Disponibili via WhatsApp, telefono o email. Rispondiamo entro poche ore." data-en="Available via WhatsApp, phone or email. We reply within a few hours.">Available via WhatsApp, phone or email. We reply within a few hours.</p>
+
+      <div class="contatti-cards">
+        <!-- Address -->
+        <div class="contatti-card">
+          <div class="contatti-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div class="contatti-card-body">
+            <div class="contatti-card-label" data-it="Indirizzo" data-en="Address">Address</div>
+            <div class="contatti-card-value">Via Granchiaia, 4<br>52019 Laterina Pergine Valdarno (AR)<br>- Bivio al km 50 della SR 69 -</br></div>
+          </div>
+        </div>
+        <!-- Phone -->
+        <div class="contatti-card">
+          <div class="contatti-icon">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          <div class="contatti-card-body">
+            <div class="contatti-card-label" data-it="Telefono" data-en="Phone">Phone</div>
+            <div class="contatti-card-value"><a href="tel:+393311474808">+39 331 147 4808</a></div>
+          </div>
+        </div>
+        <!-- Email -->
+        <div class="contatti-card">
+          <div class="contatti-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div class="contatti-card-body">
+            <div class="contatti-card-label">Email</div>
+            <div class="contatti-card-value"><a href="mailto:carpanelle@gmail.com">carpanelle@gmail.com</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp CTA -->
+      <div class="contatti-cta-box">
+        <p data-it="<strong>Prenota una camera</strong> o richiedi informazioni sui nostri prodotti." data-en="<strong>Book a room</strong> or ask about our products."><strong>Book a room</strong> or ask about our products.</p>
+        <a href="https://api.whatsapp.com/send?phone=393311474808&text=Hello,%20I%20would%20like%20more%20information%20about%20Le%20Carpanelle" target="_blank" rel="noopener" class="contatti-wa-btn">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-it="WhatsApp" data-en="WhatsApp">WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Map right -->
+    <div class="contatti-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2895.3332586817746!2d11.6975716!3d43.4745151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132bc1304e7917e9%3A0x10d4a05f73d0efe1!2sClaudia%20B%26B!5e0!3m2!1sen!2ses!4v1779655307054!5m2!1sen!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Le Carpanelle map"></iframe>
+    </div>
+  </div>
+
+</div><!-- end page-contatti -->
+
+<!-- ===================== B&B CLAUDIA PAGE ===================== -->
+<div class="page" id="page-bb">
+
+  <!-- Hero — full viewport, nav overlays like homepage -->
+  <div class="bb-page-hero">
+    <div class="bb-page-hero-text">
+      <p class="section-label" data-it="Soggiorno · Laterina Pergine Valdarno" data-en="Stay · Laterina Pergine Valdarno">Stay · Laterina Pergine Valdarno</p>
+      <h1>B&amp;B <em>Claudia</em></h1>
+      <p data-it="Due camere nel cuore del Valdarno Toscano" data-en="Two rooms in the heart of the Tuscan Valdarno">Two rooms in the heart of the Tuscan Valdarno</p>
+    </div>
+  </div>
+
+  <!-- Intro block — Poggio style: text left, image right -->
+  <div class="bb-intro">
+    <div class="bb-intro-text">
+      <p class="section-label" data-it="Il B&B" data-en="The B&B">The B&B</p>
+      <h2 class="section-title" data-it="<em>Autenticità</em><br>e semplicità" data-en="<em>Authenticity</em><br>and simplicity"><em>Authenticity</em><br>and simplicity</h2>
+      <div class="divider"></div>
+      <p class="section-body" data-it="Il nostro Bed&Breakfast sorge tra le colline di Laterina Pergine Valdarno, immerso nella quiete della campagna toscana. Due camere doppie arredate con cura, dove svegliarsi al profumo del pane fresco e di un'ottima marmellata." data-en="Claudia B&B sits among the hills of Laterina Pergine Valdarno, surrounded by the tranquillity of the Tuscan countryside. Two carefully furnished double rooms, where you wake up to the scent of fresh bread and homemade jam.">Claudia B&B sits among the hills of Laterina Pergine Valdarno, surrounded by the tranquillity of the Tuscan countryside. Two carefully furnished double rooms, where you wake up to the scent of fresh bread and homemade jam.</p>
+      <div class="divider"></div>
+      <p class="section-body" data-it="La colazione è preparata con i nostri prodotti: l'olio extravergine delle Carpanelle, il miele raccolto dalle nostre api, ortaggi freschi dell'orto. Una pausa dal mondo, nel cuore della Toscana vera." data-en="Breakfast is prepared with our own produce: the extra virgin olive oil from Le Carpanelle, honey gathered from our bees, fresh vegetables from the garden. A pause from the world, in the heart of authentic Tuscany.">Breakfast is prepared with our own produce: the extra virgin olive oil from Le Carpanelle, honey gathered from our bees, fresh vegetables from the garden. A pause from the world, in the heart of authentic Tuscany.</p>
+      <div style="margin-top: 2.5rem;">
+        <a href="https://api.whatsapp.com/send?phone=393311474808&text=Hello,%20I%20would%20like%20to%20book%20a%20room%20at%20B%26B%20Claudia" target="_blank" rel="noopener" class="bb-book" data-it="Prenota via WhatsApp" data-en="Book via WhatsApp">Book via WhatsApp</a>
+      </div>
+    </div>
+    <div class="bb-intro-image" role="img" aria-label="Claudia B&B room"></div>
+  </div>
+
+  <!-- Amenities grid -->
+  <section class="bb-amenities-section">
+    <div class="services-header">
+      <p class="section-label" data-it="Cosa Offriamo" data-en="What We Offer">What We Offer</p>
+      <h2 class="section-title" style="font-size:clamp(2rem,3vw,3rem); text-align:center;" data-it="Comfort, <em>natura</em> e relax" data-en="Comfort, <em>nature</em> &amp; relaxation">Comfort, <em>nature</em> &amp; relaxation</h2>
+    </div>
+    <div class="bb-features-grid">
+      <div class="bb-feature">
+        <div class="bb-feature-icon">☕</div>
+        <h3 data-it="Colazione Inclusa" data-en="Breakfast Included">Breakfast Included</h3>
+        <p data-it="Ogni mattina con i nostri prodotti: miele, olio e prodotti freschi dell'orto." data-en="Every morning with our own products: honey, olive oil and fresh garden vegetables.">Every morning with our own products: honey, olive oil and fresh garden vegetables.</p>
+      </div>
+      <div class="bb-feature">
+        <div class="bb-feature-icon">🌿</div>
+        <h3 data-it="Vista Campagna" data-en="Countryside Views">Countryside Views</h3>
+        <p data-it="Camere con vista sulle colline del Valdarno, circondato da uliveti e natura incontaminata." data-en="Rooms overlooking the Valdarno hills, surrounded by olive groves and unspoilt nature.">Rooms overlooking the Valdarno hills, surrounded by olive groves and unspoilt nature.</p>
+      </div>
+      <div class="bb-feature">
+        <div class="bb-feature-icon">🚗</div>
+        <h3 data-it="Parcheggio Gratuito" data-en="Free Parking">Free Parking</h3>
+        <p data-it="Ampio parcheggio privato incluso nel soggiorno, a disposizione degli ospiti 24 ore su 24." data-en="Spacious private parking included with your stay, available to guests around the clock.">Spacious private parking included with your stay, available to guests around the clock.</p>
+      </div>
+      <div class="bb-feature">
+        <div class="bb-feature-icon">📶</div>
+        <h3>Wi-Fi</h3>
+        <p data-it="Connessione Wi-Fi gratuita in tutta la struttura, per restare connessi anche in mezzo alla natura." data-en="Free Wi-Fi throughout the property, so you can stay connected even in the middle of nature.">Free Wi-Fi throughout the property, so you can stay connected even in the middle of nature.</p>
+      </div>
+      <div class="bb-feature">
+        <div class="bb-feature-icon">🏛️</div>
+        <h3 data-it="Posizione Ideale" data-en="Ideal Location">Ideal Location</h3>
+        <p data-it="A pochi chilometri da Arezzo, Firenze, Siena e i borghi medievali del Valdarno." data-en="Just a few kilometres from Arezzo, Florence, Siena and the medieval villages of the Valdarno.">Just a few kilometres from Arezzo, Florence, Siena and the medieval villages of the Valdarno.</p>
+      </div>
+      <div class="bb-feature">
+        <div class="bb-feature-icon">🛏️</div>
+        <h3 data-it="Due Camere Doppie" data-en="Two Double Rooms">Two Double Rooms</h3>
+        <p data-it="Ambienti curati e confortevoli, con biancheria di qualità e attenzione ai dettagli." data-en="Carefully furnished and comfortable spaces, with quality linen and attention to detail.">Carefully furnished and comfortable spaces, with quality linen and attention to detail.</p>
+      </div>
+    </div>
+
+    <!-- Massage — full width, last item inside Cosa Offriamo -->
+    <div class="massage-section">
+      <div class="massage-image" role="img" aria-label="Massaggio rilassante"></div>
+      <div class="massage-text">
+        <p class="section-label" data-it="Benessere in struttura" data-en="Wellness on site">Wellness on site</p>
+        <h2 class="section-title" data-it="Massaggio <em>rilassante</em> e decontratturante" data-en="Relaxing &amp; <em>decontracting</em> massage">Relaxing &amp; <em>decontracting</em> massage</h2>
+        <div class="divider"></div>
+        <p class="section-body" data-it="In un ambiente curato e confortevole, Claudia si prenderà cura dei nostri ospiti con un massaggio rilassante o decontratturante, direttamente in struttura." data-en="In a carefully furnished and comfortable space, Claudia will take care of you with a relaxing or decontracting massage, directly on site.">In a carefully furnished and comfortable space, Claudia will take care of you with a relaxing or decontracting massage, directly on site.</p>
+        <div style="margin-top:2rem;">
+          <a href="https://api.whatsapp.com/send?phone=393311474808&text=Hello,%20I%20would%20like%20to%20book%20a%20massage%20at%20Le%20Carpanelle" target="_blank" rel="noopener" class="bb-book" data-it="Prenota un massaggio" data-en="Book a massage">Book a massage</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Photo gallery strip — last element of the page -->
+  <div class="bb-gallery">
+    <div class="bb-gal-img bb-gal-1"></div>
+    <div class="bb-gal-img bb-gal-2"></div>
+    <div class="bb-gal-img bb-gal-3"></div>
+  </div>
+
+</div><!-- end page-bb -->
+
+<!-- ===================== GALLERY PAGE (COMPLETE & CORRECTED) ===================== -->
+<div class="page" id="page-gallery">
+
+  <!-- Hero Section (Opcional, mantener si tienes un título aquí) -->
+  <div class="gg-page-hero">
+    <!-- Si necesitas título aquí, puedes agregarlo, pero el código original estaba vacío -->
+  </div>
+
+  <!-- Gallery Grid -->
+  <section class="services" style="padding-top: 4rem; padding-bottom: 4rem; text-align: center; background: #faf8f5;">
+    <div class="services-header" style="margin-bottom: 3rem;">
+      <span class="section-label" data-it="Galleria" data-en="Gallery">Gallery</span>
+      <h2 class="section-title" data-it="L'azienda in <em>immagini!</em>" data-en="The Farm in Images">The Farm in Images</h2>
+    </div>
+
+    <!-- GALLERY GRID -->
+<div class="gallery-grid">
+
+<!-- Item 1 -->
+<div class="gallery-item span-1">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/olive.jpg');"></div>
+<h3 class="gallery-title" data-it="Le Nostre Olive" data-en="Our Olive Groves">Our Olive Groves</h3>
+</div>
+
+<!-- Item 2 -->
+<div class="gallery-item span-2">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/cartello_B&B.jpg');"></div>
+<h3 class="gallery-title" data-it="Indicazioni" data-en="Directions & Info">Directions & Info</h3>
+</div>
+
+<!-- Item 3 -->
+<div class="gallery-item span-1">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/miele_1.jpg');"></div>
+<h3 class="gallery-title" data-it="Miele Artigianale" data-en="Artisan Honey">Artisan Honey</h3>
+</div>
+
+<!-- Item 4 -->
+<div class="gallery-item span-3">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/vista_zona_api.jpg');"></div>
+<h3 class="gallery-title" data-it="L'azienda" data-en="Our Farm">Our Farm</h3>
+</div>
+
+<!-- Item 5 -->
+<div class="gallery-item span-1">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/Olio_bottiglia_etichetta.jpg');"></div>
+<h3 class="gallery-title" data-it="Olio artigianale" data-en="Artisan Oil">Artisan Oil</h3>
+</div>
+
+<!-- Item 6 -->
+<div class="gallery-item span-2">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/capre.jpg');"></div>
+<h3 class="gallery-title" data-it="Animale dell'azienda" data-en="Valdarno Landscape">Valdarno Landscape</h3>
+</div>
+
+<!-- Item 7 -->
+<div class="gallery-item span-1">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/cartello_escursioni.jpg');"></div>
+<h3 class="gallery-title" data-it="Escursioni" header-data-it="Escursioni" header-data-en="Hiking">Hiking</h3>
+</div>
+
+<!-- Item 8 -->
+<div class="gallery-item span-1">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/vista_giardino.jpg');"></div>
+<h3 class="gallery-title" data-it="L'azienda" data-en="Our Farm">Our Farm</h3>
+</div>
+
+<!-- Item 9 -->
+<div class="gallery-item span-2">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/castagne.jpg');"></div>
+<h3 class="gallery-title" data-it="Castagne" data-en="Chestnuts">Chestnuts</h3>
+</div>
+
+<!-- Item 10 -->
+<div class="gallery-item span-1">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/orto.jpg');"></div>
+<h3 class="gallery-title" data-it="L'Orto Bio" data-en="The Organic Garden">The Organic Garden</h3>
+</div>
+
+<!-- Item 11 -->
+<div class="gallery-item span-3">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/pomodori.jpg');"></div>
+<h3 class="gallery-title" data-it="L'azienda" data-en="Our Farm">Our Farm</h3>
+</div>
+
+<!-- Item 12 -->
+<div class="gallery-item span-1">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/orto_1.jpg');"></div>
+<h3 class="gallery-title" data-it="L'Orto bio" data-en="The Organic Garden">The Organic Garden</h3>
+</div>
+
+<!-- Item 13 -->
+<div class="gallery-item span-2">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/api_sciame.jpg');"></div>
+<h3 class="gallery-title" data-it="Valdarno" data-en="Valdarno Landscape">Valdarno Landscape</h3>
+</div>
+
+<!-- Item 14 -->
+<div class="gallery-item span-1">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/massaggio_lettino.jpg');"></div>
+<h3 class="gallery-title" data-it="Massaggio" data-en="Massage">Massage</h3>
+</div>
+
+<!-- Item 15 -->
+<div class="gallery-item span-1">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/miele_scolatura.jpg');"></div>
+<h3 class="gallery-title" data-it="Miele" data-en="Honey">Honey</h3>
+</div>
+<!-- Item 14 -->
+<div class="gallery-item span-1">
+<div class="gallery-bg" style="background-image: url('immagini/galleria/massaggio_lettino.jpg');"></div>
+<h3 class="gallery-title" data-it="Massaggio" data-en="Massage">Massage</h3>
+</div>
+</div> <!--- end gallery-grid -->
+
+</section> <!--- end services section -->
+
+</div> <!--- end page-gallery -->
+
+<div class="page" id="page-pp">
+
+  <!-- Hero — full viewport, nav overlays like homepage -->
+  <div class="pp-page-hero">
+    </div>
+              <div class="description-privacy" style="padding:2vw;">
+                      <div class="span">
+                        <h2>Privacy</h2><br>
+  <span>1. PERCHE' RICEVI QUESTA COMUNICAZIONE</span><br><br>
+  Azienda Agricola Le Carpanelle di Dario Presenti, in qualità di Titolare del Trattamento, vuole informarvi su quali dati raccoglie e con quali modalità, in modo da garantire il rispetto dei tuoi diritti e delle tue libertà fondamentali, con particolare riferimento alla riservatezza e alla sicurezza con cui i dati vengono trattati.<br>
+  <br>
+  <span>2. QUALI DATI PERSONALI RACCOGLIAMO</span><br><br>
+  Azienda Agricola Le Carpanelle raccoglie e conserva i tuoi dati anagrafici e identificativi (quali ad esempio nome, cognome, indirizzo di residenza, indirizzo email, corsi di interesse, cittadinanza, sesso, luogo e data di nascita, numero di telefono) attraverso i seguenti canali:<br>
+  a) compilazione form;<br>
+  b) form cartacei raccolti in occasione di eventi;<br>
+  Possiamo chiedere ai canali social di inviare informazioni sulle nostre attività in base ai profili dei loro utenti e secondo quanto previsto dalla loro politica sul trattamento dei dati, ma non siamo a conoscenza del tuo nominativo.
+  L’invio facoltativo, esplicito e volontario di posta elettronica e/o ordinaria agli indirizzi indicati su questo sito comporta la successiva acquisizione dell’indirizzo del mittente, necessario per rispondere alle richieste, nonché degli eventuali altri dati personali inseriti nella missiva.<br>
+  <br>
+  <span>3. PER QUALI FINALITÀ USIAMO I TUOI DATI PERSONALI</span><br><br>
+  3.1  Azienda Agricola Le Carpanelle utilizza i tuoi dati per le seguenti finalità:<br>
+  contattarti e inviarti informazioni sulle nostre attività tramite mail o telefono a seguito delle tue richieste;<br>
+  aggregare e analizzare le informazioni raccolte per migliorare la nostra offerta;<br>
+  registrazione nei nostri archivi<br>
+  3.2 Previo tuo specifico consenso:<br>
+  inviarti comunicazioni relative alle iniziative promozionali delle nostre attività che ti potrebbero interessare.<br>
+  inserimento dei tuoi dati nelle nostre banche dati al fine di effettuare attività di profilazione per poterti inviare proposte e offerte in linea con i tuoi interessi.<br>
+  <br>
+  <span>4. PER QUANTO TEMPO CONSERVIAMO I TUOI DATI PERSONALI</span><br><br>
+  Conserviamo i tuoi dati per 3 anni dall’ultimo contatto con te, a meno che tu non voglia richiederne la cancellazione prima. Dopo questo termine saranno cancellati o resi anonimi per motivi statistici.<br>
+  Per la finalità di cui al punto 3.1.e. Azienda Agricola Le Carpanelle  conserverà le registrazioni unicamente per 3 anni, al termine del quale verranno cancellate.<br>
+  Per le finalità di cui al punto 3.2.a. i tuoi dati verranno trattati per la durata di 3 anni, al termine dei quali ti verrà richiesto nuovamente il consenso alla ricezione delle newsletter.<br>
+  <br>
+  <span>5. LA SICUREZZA DEI TUOI DATI PERSONALI</span><br><br>
+  Il trattamento dei tuoi dati avverrà mediante strumenti idonei a garantirne la riservatezza, l’integrità e la disponibilità. Il trattamento è effettuato su supporto cartaceo e mediante sistemi informativi e/o automatizzati e comprenderà tutte le operazioni o complesso di operazioni previste all’art. 4 del GDPR e necessarie al trattamento in questione, ivi inclusa la comunicazione nei confronti dei soggetti incaricati al trattamento stesso. I dati in questione non saranno oggetto di diffusione; invece, saranno o potranno essere comunicati a soggetti, pubblici o privati, che operano nell’ambito delle finalità sopra descritte.<br>
+  <br>
+  <span>6. CHI PUÒ ACCEDERE AI TUOI DATI PERSONALI</span><br><br>
+  Possono accedere ai tuoi dati esclusivamente persone autorizzate nell’ambito delle mansioni assegnate da Azienda Agricola Le Carpanelle .<br>
+  I dati personali non saranno in alcun modo diffusi, potranno essere inoltre comunicati e trattati da soggetti terzi debitamente nominati quali Responsabili del trattamento, come ad esempio collaboratori esterni e società che forniscono specifici servizi strumentali.<br>
+  I dati personali potranno inoltre essere accessibili o potranno essere comunicati a soggetti cui la facoltà di accedere ai suoi dati personali sia riconosciuta da disposizioni di legge o di normativa secondaria o comunitaria.<br>
+  <br>
+  <span>7. DOVE RISIEDONO I TUOI DATI PERSONALI</span><br><br>
+  La gestione e la conservazione dei tuoi dati personali avverrà su server ubicati all’interno dell’Unione Europea del Titolare e di società terze incaricate e debitamente nominate quali Responsabili del trattamento. I dati non saranno oggetto di trasferimento al di fuori dell’Unione Europea.<br>
+  <br>
+  <span>8. È OBBLIGATORIO ACCONSENTIRE AL CONFERIMENTO DEI TUOI DATI</span><br><br>
+  La trasmissione dei tuoi dati è facoltativa, se non acconsenti non potrai venire a conoscenza delle nostre iniziative, né potrai ricevere le nostre comunicazioni per mezzo delle nostre newsletter.<br>
+  <br>
+  <span>9. QUALI SONO I TUOI DIRITTI IN RELAZIONE AL GDPR?</span><br><br>
+  Secondo le disposizioni del GDPR, Azienda Agricola Le Carpanelle . garantisce i seguenti diritti:<br>
+  <ul>
+  <li>ottenere la conferma che sia o meno in corso un trattamento di dati personali che ti riguardano e in tal caso, ottenere l’accesso ai dati personali (Diritto di accesso art. 15); </li>
+  <li>ottenere la rettifica dei dati personali inesatti che ti riguardano senza ingiustificato ritardo (Diritto di Rettifica art. 16); </li>
+  <li>ottenere la cancellazione dei dati personali che ti riguardano senza ingiustificato ritardo, Azienda Agricola Le Carpanelle  ha l’obbligo di cancellare senza ingiustificato ritardo i tuoi dati personali, se sussistono determinate condizioni (Diritto all’oblio art. 17);</li>
+  <li>ottenere la limitazione del trattamento in determinate ipotesi (Diritto alla limitazione del trattamento art. 18);</li>
+  <li>ricevere in un formato strutturato, di uso comune e leggibile da dispositivo automatico i dati personali che ci hai fornito e poterli eventualmente trasmettere a un altro Titolare del trattamento (Diritto alla portabilità dei dati art. 20);</li>
+  <li>opporsi in qualsiasi momento, per motivi connessi alla tua situazione particolare, al trattamento dei dati personali che ti riguardano (Diritto di opposizione art 21);</li>
+  <li>ricevere senza ingiustificato ritardo comunicazione della violazione dei dati personali subita da Azienda Agricola Le Carpanelle .(Art. 34);</li>
+  <li>revocare il consenso espresso in qualsiasi momento (Condizioni per il consenso art. 7).</li>
+  </ul> <br>
+  <br>
+  <span>10. PER OGNI RICHIESTA PUOI RIVOLGERTI AI CONTATTI FORNITI DA TITOLARE DEL TRATTAMENTO</span><br><br>
+  Se ritieni che non abbiamo rispettato i tuoi diritti in materia di protezione dei dati personali, puoi rivolgersi all’Autorità Garante per la protezione dei dati personali. In alternativa, se risiedi in un altro Paese, puoi contattare il Garante per la protezione dei dati personali locale.<br>
+  <br>
+  <span>11. TITOLARE DEL TRATTAMENTO</span><br><br>
+  Il Titolare del Trattamento è l'Azienda Agricola Le Carpanelle – Via Granchiaia, 4 - 52019, Laterina Pergine Valdarno (AR)<br>
+  Telefono: +39 3311474808<br>
+  E-mail: carpanelle@gmail.com<br>
+  Il Responsabile per la protezione dei dati è Dario Presenti  PIVA 02030470518<br>
+  <br>
+  <span>12. AGGIORNAMENTO DELLA PRESENTE INFORMATIVA</span><br><br>
+  La presente Informativa può subire variazioni. Eventuali modifiche sostanziali ti saranno comunicate via mail o attraverso il nostro sito internet.<br>
+         </div>
+       </div>
+
+
+</div><!-- end page-bb PRYVACY -->
+
+
+<!-- ===================== SHARED FOOTER ===================== -->
+<footer>
+  <!-- Top bar: socials left, brand center -->
+  <div class="footer-top">
+    <div class="footer-social-top">
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/profile.php?id=100054376487585" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.885v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+      </a>
+      <!-- Google Maps / Reviews -->
+      <a href="https://www.google.com/maps/place/Claudia+B%26B" target="_blank" rel="noopener" aria-label="Google">
+        <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </a>
+      <!-- WhatsApp -->
+      <a href="https://api.whatsapp.com/send?phone=393311474808" target="_blank" rel="noopener" aria-label="WhatsApp" style="--wa:1">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+
+    <div class="footer-brand-center">
+      <span class="footer-brand-name">Le Carpanelle</span>
+      <span class="footer-brand-sub" data-it="Azienda Agricola · Claudia B&B" data-en="Farm Estate · Claudia B&B">Farm Estate · Claudia B&B</span>
+    </div>
+
+    <!-- Spacer to balance socials on the right -->
+    <div style="width:120px;"></div>
+  </div>
+
+  <!-- Three columns -->
+  <div class="footer-cols">
+    <div class="footer-col">
+      <h4 data-it="L'Azienda" data-en="The Farm">The Farm</h4>
+      <p data-it="Azienda agricola a conduzione familiare nel cuore del Valdarno Superiore. Olio extravergine, miele artigianale, ortaggi e ospitalità nel Claudia B&B." data-en="Family-run farm estate in the heart of the Valdarno Superiore. Extra virgin olive oil, artisan honey, vegetables and hospitality at Claudia B&B.">Family-run farm estate in the heart of the Valdarno Superiore. Extra virgin olive oil, artisan honey, vegetables and hospitality at Claudia B&B.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-it="Contatti" data-en="Contact">Contact</h4>
+      <p>Via Granchiaia, 4<br>52019 Laterina Pergine Valdarno (AR)</p>
+      <a href="tel:+393311474808">+39 331 147 4808</a>
+      <a href="mailto:carpanelle@gmail.com">carpanelle@gmail.com</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-it="Navigazione" data-en="Navigation">Navigation</h4>
+      <div class="footer-nav-links">
+        <a onclick="showPage('home'); scrollToSection('benvenuto')" style="cursor:pointer;" data-it="Chi siamo" data-en="About us">About us</a>
+        <a onclick="showPage('home'); scrollToSection('servizi')" style="cursor:pointer;" data-it="I nostri prodotti" data-en="Our products">Our products</a>
+        <a onclick="showPage('bb-page')" style="cursor:pointer;">B&amp;B Claudia</a>
+        <a onclick="showPage('home'); scrollToSection('recensioni')" style="cursor:pointer;" data-it="Recensioni" data-en="Reviews">Reviews</a>
+        <a onclick="showPage('gallery')" style="cursor:pointer;" data-it="Galleria" data-en="Gallery">Gallery</a>
+        <a onclick="showPage('contatti')" style="cursor:pointer;" data-it="Contatti & Mappa" data-en="Contact & Map">Contact &amp; Map</a>
+        <a onclick="showPage('pp-page')" style="cursor:pointer;">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Az. Agricola Le Carpanelle · P.I. 02030470518 · CIN IT051042C1ATWFFRUJ · by EDL</span>
+    <a href="https://www.lecarpanelle.it/privacy.html" data-it="Privacy Policy" data-en="Privacy Policy">Privacy Policy</a>
+  </div>
+</footer>
+
+<script>
+  // ===== NAV SCROLL =====
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+  // On hero pages nav starts transparent; scrolled class is only added on scroll
+
+  // ===== HAMBURGER MENU =====
+  function toggleMobileNav() {
+    const drawer = document.getElementById('mobile-drawer');
+    const burger = document.getElementById('hamburger');
+    const isOpen = drawer.classList.toggle('open');
+    burger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+
+  // ===== HERO SLIDER =====
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  function goSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+  setInterval(() => goSlide((current + 1) % slides.length), 5500);
+
+  // ===== PAGE NAVIGATION =====
+const heroPages = new Set(['home', 'bb-page', 'pp-page', 'contatti', 'gallery']);
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const pageMap = { 'home': 'page-home', 'contatti': 'page-contatti', 'bb-page': 'page-bb', 'pp-page': 'page-pp', 'gallery': 'page-gallery'};
+  const el = document.getElementById(pageMap[name]);
+  if (el) { el.classList.add('active'); window.scrollTo(0, 0); }
+  // transparent nav on hero pages, opaque on others
+  if (heroPages.has(name)) { nav.classList.remove('scrolled'); } else { nav.classList.add('scrolled'); }
+  // close mobile drawer if open
+  const drawer = document.getElementById('mobile-drawer');
+  if (drawer.classList.contains('open')) toggleMobileNav();
+}
+
+function scrollToSection(id) {
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, 50);
+}
+
+  // ===== LANGUAGE =====
+  const browserLang = (navigator.language || navigator.userLanguage || 'en').substring(0, 2).toLowerCase();
+  let lang = browserLang === 'it' ? 'it' : 'en';
+
+  function setLang(l) {
+    lang = l;
+    document.getElementById('btn-it').classList.toggle('active', l === 'it');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+    // sync mobile buttons
+    const mbit = document.getElementById('mbtn-it');
+    const mben = document.getElementById('mbtn-en');
+    if (mbit) mbit.classList.toggle('active', l === 'it');
+    if (mben) mben.classList.toggle('active', l === 'en');
+    document.querySelectorAll('[data-' + l + ']').forEach(el => {
+      el.innerHTML = el.getAttribute('data-' + l);
+    });
+    document.documentElement.lang = l;
+  }
+
+  setLang(lang);
+</script>
+<div id="cookie-bar">
+  <p>Questo sito usa cookie tecnici e, tramite Google Maps e Google Fonts, cookie di terze parti.
+  <a href="#" onclick="showPage('pp-page')">Privacy Policy</a></p>
+  <div class="cb-btns">
+    <button class="cb-reject">Solo necessari</button>
+    <button class="cb-accept">Accetta</button>
+  </div>
+</div>
+
+<div id="cookie-banner">
+  <p>Questo sito usa cookie tecnici e, tramite Google Fonts e Maps, cookie di terze parti.
+  <a href="#" onclick="showPage('pp-page')" >Privacy Policy</a></p>
+  <div class="cookie-btns">
+    <button class="cookie-btn-reject" id="cookie-reject">Solo necessari</button>
+    <button class="cookie-btn-accept" id="cookie-accept">Accetta</button>
+  </div>
+</div>
+<script src="main.js"></script>
+<script src="cookie.js"></script>
+</body>
+</html>
