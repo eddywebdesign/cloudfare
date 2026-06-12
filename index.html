@@ -5,42 +5,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Azienda Agricola Le Carpanelle -Dario Presenti</title>
 <meta name="description" content="Azienda agricola a Arezzo: miele, olio e B&B.">
-<meta name="keywords" content="Azienda agricola arezzo, miele, pergine valdarno laterina, B&B">
+<meta name="keywords" content="Azienda agricola Arezzo, miele biologico, olio extravergine, B&B Pergine Valdarno, agriturismo Toscana, Le Carpanelle">
 <meta name="author" content="Azienda Agricola Le Carpanelle">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.lecarpanelle.it/">
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Azienda Agricola a Laterina Pergine Valdarno Arezzo: miele, olio, ortaggi, B&B.">
-<meta property="og:description" content="Azienda Agricola a Laterina Pergine Valdarno Arezzo: miele, olio, ortaggi, B&B.">
-<meta property="og:url" content="https://www.lecarpanelle.it/">
-<meta property="og:site_name" content="Azienda Agricola Le Carpanelle">
-<meta property="og:image" content="immagini/logo.png">
-<meta property="og:locale" content="it_IT">
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Azienda Agricola a Laterina Pergine Valdarno Arezzo: miele, olio, ortaggi, B&B.">
-<meta name="twitter:description" content="Azienda Agricola a Laterina Pergine Valdarno Arezzo: miele, olio, ortaggi, B&B.">
-<link rel="icon" type="image/png" href="immagini/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Azienda Agricola Le Carpanelle - Miele, Olio e Ospitalità">
+    <meta property="og:description" content="Visita la nostra azienda agricola a Laterina. Degustazione di miele e olio, vendita diretta e B&B nella natura toscana.">
+    <meta property="og:url" content="https://www.lecarpanelle.it/">
+    <meta property="og:site_name" content="Azienda Agricola Le Carpanelle">
+    <meta property="og:locale" content="it_IT">
+    <!-- Asegúrate de que la imagen sea de alta calidad (mínimo 1200x630px) -->
+    <meta property="og:image" content="https://www.lecarpanelle.it/immagini/logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Azienda Agricola Le Carpanelle">
+    <meta name="twitter:description" content="Miele, olio e B&B a Arezzo. Scopri la bellezza della Toscana con noi.">
+    <meta name="twitter:image" content="https://www.lecarpanelle.it/immagini/logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://www.lecarpanelle.it/immagini/favicon.png">
+
 <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="cookie.css">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --cream: #f5f0e8;
-    --gold: #a07840;
-    --gold-light: #c9a96e;
-    --dark: #3F3F3F;
-    --text: #3a3228;
-    --muted: #7a6e60;
-    --white: #faf8f5;
-  }
-  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-  body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+/* 1. Reset estricto */
+*, *::before, *::after {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+}
+
+/* 2. Variables de diseño (Paleta Tierra/Oro) */
+:root {
+ --cream: #f5f0e8;
+ --gold: #a07840;
+ --gold-light: #c9a96e;
+ --dark: #3F3F3F;
+ --text: #3a3228;
+ --muted: #7a6e60;
+ --white: #faf8f5;
+
+ /* Tipografía base */
+ --font-main: 'Jost', sans-serif;
+}
+
+/* 3. Comportamiento de scroll suave (respetando accesibilidad) */
+@media (prefers-reduced-motion: no-preference) {
+ html {
+   scroll-behavior: smooth;
+ }
+}
+
+/* 4. Estilos del cuerpo */
+body {
+ font-family: var(--font-main);
+ background-color: var(--white);
+ color: var(--text);
+ line-height: 1.6; /* Mejora la lectura */
+ font-size: 16px; /* Tamaño base seguro para móviles */
+
+ /* Solo activa esto si es estrictamente necesario para corregir desbordamientos */
+ /* overflow-x: hidden; */
+}
 
   /* PAGE SYSTEM */
   .page { display: none; }
