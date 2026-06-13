@@ -40,18 +40,13 @@
     });
   }
 
-  /* ── Show/hide banner via inline style.
-        The banner has style="display:none" set directly in HTML to prevent
-        a flash-of-banner before the external CSS loads. Because inline styles
-        beat stylesheet rules, we must also show/hide via inline style here. ── */
+  /* ── Show/hide banner via class (cross-browser safe) ── */
   function showBanner(banner) {
-    banner.style.removeProperty('display'); /* remove inline none */
-    banner.classList.add('cookie-banner--visible'); /* CSS class takes over */
+    banner.className = (banner.className + ' cookie-banner--visible').replace(/^\s+/, '');
   }
 
   function hideBanner(banner) {
-    banner.classList.remove('cookie-banner--visible');
-    banner.style.display = 'none'; /* put inline none back */
+    banner.className = banner.className.replace(/\s*cookie-banner--visible/g, '');
   }
 
   /* ── Init ── */
