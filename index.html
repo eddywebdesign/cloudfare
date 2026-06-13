@@ -30,28 +30,28 @@
 
 <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="cookie.css">
-<style>
-/* 1. Reset estricto */
-*, *::before, *::after {
- box-sizing: border-box;
- margin: 0;
- padding: 0;
-}
+  <link rel="stylesheet" href="cookie.css">
+  <style>
+  /* 1. Reset estricto */
+  *, *::before, *::after {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+  }
 
 /* 2. Variables de diseño (Paleta Tierra/Oro) */
-:root {
- --cream: #f5f0e8;
- --gold: #a07840;
- --gold-light: #c9a96e;
- --dark: #3F3F3F;
- --text: #3a3228;
- --muted: #7a6e60;
- --white: #faf8f5;
+  :root {
+   --cream: #f5f0e8;
+   --gold: #a07840;
+   --gold-light: #c9a96e;
+   --dark: #3F3F3F;
+   --text: #3a3228;
+   --muted: #7a6e60;
+   --white: #faf8f5;
 
- /* Tipografía base */
- --font-main: 'Jost', sans-serif;
-}
+   /* Tipografía base */
+   --font-main: 'Jost', sans-serif;
+  }
 
 /* 3. Comportamiento de scroll suave (respetando accesibilidad) */
 @media (prefers-reduced-motion: no-preference) {
@@ -787,11 +787,29 @@ body {
   </a>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a onclick="showPage('home'); scrollToSection('servizi')" data-it="I Nostri Prodotti" data-en="Our Products">Our Products</a></li>
-      <li><a onclick="showPage('bb-page')" data-it="Claudia B&B" data-en="Claudia B&B">Claudia B&B</a></li>
-      <li><a onclick="showPage('gallery')" data-it="Galleria" data-en="Gallery">Gallery</a></li>
-    </ul>
-    <a onclick="showPage('contatti')" class="nav-book" data-it="Contattaci" data-en="Book Now">Book Now</a>
+      <!-- Home -->
+ <li><a href="#" onclick="goToServizi(); return false;"
+     data-it="I Nostri Prodotti"
+     data-en="Our Products">Our Products</a></li>
+ <!-- B&B -->
+ <li>
+   <a href="#"
+      onclick="showPage('bb-page'); return false;"
+      data-title="Claudia B&B"
+      data-it="Claudia B&B"
+      data-en="Claudia B&B">Claudia B&B</a>
+ </li>
+
+ <!-- Gallery -->
+ <li>
+   <a href="#"
+      onclick="showPage('gallery'); return false;"
+      data-title="Gallery"
+      data-it="Galleria"
+      data-en="Gallery">Gallery</a>
+ </li>
+  <!-- Contatti -->
+    <a href="#" onclick="event.preventDefault(); showPage('contatti', 'Contatti')" class="nav-book" data-it="Contattaci" data-en="Book now">Book now</a>
     <div class="lang-switcher">
       <button class="lang-btn" id="btn-it" onclick="setLang('it')">ITA</button>
       <span class="lang-sep">|</span>
@@ -1352,6 +1370,8 @@ body {
 
 </div> <!--- end page-gallery -->
 
+<!-- ===================== PRYVACY PAGE page-pp ===================== -->
+
 <div class="page" id="page-pp">
 
   <!-- Hero — full viewport, nav overlays like homepage -->
@@ -1478,14 +1498,13 @@ body {
         <a onclick="showPage('home'); scrollToSection('recensioni')" style="cursor:pointer;" data-it="Recensioni" data-en="Reviews">Reviews</a>
         <a onclick="showPage('gallery')" style="cursor:pointer;" data-it="Galleria" data-en="Gallery">Gallery</a>
         <a onclick="showPage('contatti')" style="cursor:pointer;" data-it="Contatti & Mappa" data-en="Contact & Map">Contact &amp; Map</a>
-        <a onclick="showPage('pp-page')" style="cursor:pointer;">Privacy Policy</a>
       </div>
     </div>
   </div>
 
   <div class="footer-bottom">
     <span>© 2026 Az. Agricola Le Carpanelle · P.I. 02030470518 · CIN IT051042C1ATWFFRUJ · by EDL</span>
-    <a href="https://www.lecarpanelle.it/privacy.html" data-it="Privacy Policy" data-en="Privacy Policy">Privacy Policy</a>
+        <a href="#" onclick="event.preventDefault(); showPage('pp-page', 'Privacy Policy')" data-it="Privacy Policy" data-en="Privacy Policy">Privacy Policy</a>
   </div>
 </footer>
 
@@ -1518,25 +1537,128 @@ body {
   setInterval(() => goSlide((current + 1) % slides.length), 5500);
 
   // ===== PAGE NAVIGATION =====
-const heroPages = new Set(['home', 'bb-page', 'pp-page', 'contatti', 'gallery']);
-function showPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const pageMap = { 'home': 'page-home', 'contatti': 'page-contatti', 'bb-page': 'page-bb', 'pp-page': 'page-pp', 'gallery': 'page-gallery'};
-  const el = document.getElementById(pageMap[name]);
-  if (el) { el.classList.add('active'); window.scrollTo(0, 0); }
-  // transparent nav on hero pages, opaque on others
-  if (heroPages.has(name)) { nav.classList.remove('scrolled'); } else { nav.classList.add('scrolled'); }
-  // close mobile drawer if open
-  const drawer = document.getElementById('mobile-drawer');
-  if (drawer.classList.contains('open')) toggleMobileNav();
-}
+  // === CÓDIGO ACTUALIZADO DE NAVEGACIÓN ===
 
-function scrollToSection(id) {
-  setTimeout(() => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }, 50);
-}
+  function showPage(pageId, titleText) {
+      // 1. Ocultar todas las páginas
+      const allPages = document.querySelectorAll('.page');
+      allPages.forEach(p => p.classList.remove('active'));
+
+      // 2. Mapeo de ID
+      const map = {
+          'home': 'page-home',
+          'bb-page': 'page-bb',
+          'pp-page': 'page-pp',
+          'gallery': 'page-gallery',
+          'contatti': 'page-contatti'
+      };
+
+      const targetId = map[pageId];
+      if (!targetId || !document.getElementById(targetId)) {
+          console.error("Página no encontrada:", pageId);
+          return;
+      }
+
+      // 3. Mostrar la página
+      const activePage = document.getElementById(targetId);
+      activePage.classList.add('active');
+      window.scrollTo(0, 0);
+
+      // 4. Manejar el Título visual (H2)
+      const oldTitle = activePage.querySelector('.dynamic_title'); // Nota: corregido el selector si usas guion bajo o guion medio
+      if (oldTitle) oldTitle.remove();
+
+      let finalTitle = titleText;
+      if (!finalTitle) {
+          const defaults = {
+              'home': 'Home - Claudia B&B',
+              'bb-page': 'Claudia B&B',
+              'pp-page': 'Privacy Policy',
+              'gallery': 'Gallery',
+              'contatti': 'Contatti'
+          };
+          finalTitle = defaults[pageId] || pageId;
+      }
+
+      let h2 = activePage.querySelector('h2');
+      if (h2) {
+          h2.textContent = finalTitle;
+      } else {
+          h2 = document.createElement('h2');
+          h2.className = 'dynamic_title';
+          h2.textContent = finalTitle;
+          // Asegúrate de que el estilo se aplique
+          const content = activePage.querySelector('.description-privacy') || activePage.querySelector('.container') || activePage;
+          content.prepend(h2);
+      }
+
+      // 5. Manejar el menú (transparente/opaco)
+      if (typeof nav !== 'undefined') {
+          const heroPages = ['home', 'bb-page', 'pp-page', 'contatti', 'gallery'];
+          if (heroPages.includes(pageId)) {
+              nav.classList.remove('scrolled');
+          } else {
+              nav.classList.add('scrolled');
+          }
+      }
+
+      // 6. Close mobile nav if open
+      const drawer = document.getElementById('mobile-drawer');
+      if (drawer && drawer.classList.contains('open')) {
+          toggleMobileNav();
+      }
+
+      // 7. Browser tab title
+      document.title = finalTitle;
+
+      // 8. Update URL bar with hash (works without any server config)
+      const hashMap = {
+          'home':     '',
+          'bb-page':  '#ClaudiaB&B',
+          'gallery':  '#Gallery',
+          'contatti': '#Contatti',
+          'pp-page':  '#privacy'
+      };
+      const newHash = hashMap[pageId] !== undefined ? hashMap[pageId] : '#' + pageId;
+      history.pushState({ page: pageId }, finalTitle, newHash || window.location.pathname);
+  }
+
+  // ===== SCROLL TO SECTION (used by "I Nostri Prodotti" menu item) =====
+  function scrollToSection(id) {
+      // If home page is not currently active, show it first then scroll
+      const homePage = document.getElementById('page-home');
+      if (!homePage || !homePage.classList.contains('active')) {
+          showPage('home', null);
+      }
+      // Small delay so the page is rendered before scrolling
+      setTimeout(function () {
+          const target = document.getElementById(id);
+          if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+      }, 80);
+  }
+
+  // ===== GO TO SERVIZI (desktop nav "I Nostri Prodotti") =====
+  function goToServizi() {
+      scrollToSection('servizi');
+  }
+
+  // ===== BROWSER BACK / FORWARD =====
+  window.addEventListener('popstate', function (event) {
+      const hashToPage = {
+          '#ClaudiaB&B': 'bb-page',
+          '#Gallery':    'gallery',
+          '#Contatti':   'contatti',
+          '#privacy':    'pp-page'
+      };
+      const currentHash = window.location.hash;
+      const pageId = (event.state && event.state.page)
+          ? event.state.page
+          : (hashToPage[currentHash] || 'home');
+      showPage(pageId, null);
+  });
+
 
   // ===== LANGUAGE =====
   function setLang(l) {
@@ -1595,7 +1717,9 @@ function scrollToSection(id) {
 
 <div id="cookie-banner">
   <p data-it="Questo sito usa cookie tecnici e, tramite Google Fonts e Maps, cookie di terze parti. " data-en="This site uses technical cookies and, through Google Fonts and Maps, third-party cookies. ">This site uses technical cookies and, through Google Fonts and Maps, third-party cookies.
-  <a onclick="showPage('pp-page')" data-it="Privacy Policy" data-en="Privacy Policy">Privacy Policy</a></p>
+    <!-- Privacy -->
+    <a href="#" onclick="event.preventDefault(); showPage('pp-page', 'Privacy Policy')" style="text-decoration: none;"data-it="Privacy Policy" data-en="Privacy Policy">Privacy Policy</a>
+    </p>
   <div class="cookie-btns">
     <button class="cookie-btn-reject" id="cookie-reject">Solo necessari</button>
     <button class="cookie-btn-accept" id="cookie-accept">Accetta</button>
