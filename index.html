@@ -632,6 +632,17 @@ body {
   .mobile-lang-switcher span { color: rgba(255,255,255,0.25); }
 
   /* RESPONSIVE */
+  /* TABLET — reduce oversized padding so 2-column sections aren't cramped between 901-1100px */
+  @media (max-width: 1100px) and (min-width: 901px) {
+    .intro-text { padding: 4rem 2.5rem; }
+    .bb-text { padding: 4rem 2.5rem; }
+    .contatti-info { padding: 3.5rem 2.5rem; }
+    .bb-intro-text { padding: 3.5rem 2.5rem; }
+    .massage-text { padding: 2.5rem 2.5rem; }
+    .services { padding: 4rem 1.5rem; }
+    .reviews { padding: 4rem 1.5rem; }
+  }
+
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -830,8 +841,8 @@ body {
 <div class="mobile-nav-drawer" id="mobile-drawer">
   <button class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close">✕</button>
   <a onclick="showPage('home')" data-it="Home" data-en="Home">Home</a>
-  <a onclick="showPage('home'); scrollToSection('servizi')" data-it="I Nostri Prodotti" data-en="Our Products">Our Products</a>
-  <a onclick="showPage('bb-page')"><em>Claudia</em>B&amp;B</a>
+  <a onclick="scrollToSection('servizi')" data-it="I Nostri Prodotti" data-en="Our Products">Our Products</a>
+  <a onclick="showPage('bb-page')"><em>Claudia </em>B&amp;B</a>
   <a onclick="showPage('gallery')" data-it="Galleria" data-en="Gallery">Gallery</a>
   <a onclick="showPage('contatti')" data-it="Contattaci" data-en="Book now">Book now</a>
   <div class="mobile-lang-switcher">
@@ -1644,6 +1655,11 @@ body {
           const target = document.getElementById(id);
           if (target) {
               target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          // Close mobile nav if open
+          const drawer = document.getElementById('mobile-drawer');
+          if (drawer && drawer.classList.contains('open')) {
+              toggleMobileNav();
           }
       }, 80);
   }
