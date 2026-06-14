@@ -674,7 +674,7 @@ body {
     .massage-image { min-height: 220px; }
     .massage-text { padding: 2.5rem 1.8rem; }
   }
-  /* Nasconde il menu SOLO quando la pagina ha la classe .active *
+  /* Nasconde il menu SOLO quando la pagina ha la classe .active */
   body:has(#page-pp.active) .nav-right {
       display: none !important;
   }
@@ -812,6 +812,7 @@ body {
       data-it="Galleria"
       data-en="Gallery">Gallery</a>
  </li>
+    </ul>
   <!-- Contatti -->
     <a href="#" onclick="event.preventDefault(); showPage('contatti', 'Contatti')" class="nav-book" data-it="Contattaci" data-en="Book now">Book now</a>
     <div class="lang-switcher">
@@ -828,11 +829,11 @@ body {
 <!-- MOBILE NAV DRAWER -->
 <div class="mobile-nav-drawer" id="mobile-drawer">
   <button class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close">✕</button>
-  <a onclick="showPage('home'); toggleMobileNav()" data-it="Home" data-en="Home">Home</a>
-  <a onclick="showPage('home'); scrollToSection('servizi'); toggleMobileNav()" data-it="I Nostri Prodotti" data-en="Our Products">Our Products</a>
-  <a onclick="showPage('bb-page'); toggleMobileNav()"><em>Claudia</em>B&amp;B</a>
-  <a onclick="showPage('gallery'); toggleMobileNav()" data-it="Galleria" data-en="Gallery">Gallery</a>
-  <a onclick="showPage('contatti'); toggleMobileNav()" data-it="Contattaci" data-en="Book now">Book now</a>
+  <a onclick="showPage('home')" data-it="Home" data-en="Home">Home</a>
+  <a onclick="showPage('home'); scrollToSection('servizi')" data-it="I Nostri Prodotti" data-en="Our Products">Our Products</a>
+  <a onclick="showPage('bb-page')"><em>Claudia</em>B&amp;B</a>
+  <a onclick="showPage('gallery')" data-it="Galleria" data-en="Gallery">Gallery</a>
+  <a onclick="showPage('contatti')" data-it="Contattaci" data-en="Book now">Book now</a>
   <div class="mobile-lang-switcher">
     <button id="mbtn-it" onclick="setLang('it'); document.getElementById('mbtn-it').classList.add('active'); document.getElementById('mbtn-en').classList.remove('active');">ITA</button>
     <span>|</span>
