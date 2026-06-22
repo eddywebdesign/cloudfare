@@ -790,6 +790,48 @@ body {
     }
   }
 
+  /* SCROLL TO TOP BUTTON */
+  #scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 998;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    line-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.25s;
+  }
+  #scroll-top.visible {
+    opacity: 0.55;
+    visibility: visible;
+  }
+  #scroll-top:hover {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+  #scroll-top svg {
+    width: 42px;
+    height: 42px;
+    display: block;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.12));
+  }
+  #scroll-top .st-circle {
+    transition: fill 0.25s, stroke 0.25s;
+  }
+  #scroll-top .st-arrow {
+    transition: stroke 0.25s;
+  }
+  #scroll-top:hover .st-circle {
+    fill: var(--gold);
+  }
+  #scroll-top:hover .st-arrow {
+    stroke: var(--white);
+  }
+
 </style>
 </head>
 <body>
@@ -1519,15 +1561,44 @@ body {
   </div>
 
   <div class="footer-bottom">
-    <span>© 2026 Az. Agricola Le Carpanelle · P.I. 02030470518 · CIN IT051042C1ATWFFRUJ · by EDL</span>
+    <span>© 2026 Az. Agricola Le Carpanelle · P.I. 02030470518 · CIN IT051042C1ATWFFRUJ<br>by EDL</span>
         <a href="#" onclick="event.preventDefault(); showPage('pp-page', 'Privacy Policy')" data-it="Privacy Policy" data-en="Privacy Policy">Privacy Policy</a>
   </div>
 </footer>
+
+<!-- SCROLL TO TOP BUTTON -->
+<button id="scroll-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle class="st-circle" cx="12" cy="12" r="11" fill="var(--white)" stroke="var(--gold)" stroke-width="0.9"/>
+    <path class="st-arrow" d="M12 15V9"   stroke="var(--gold)" stroke-width="1.2"/>
+    <path class="st-arrow" d="M8.5 12l3.5-3.5 3.5 3.5" stroke="var(--gold)" stroke-width="1.2"/>
+  </svg>
+</button>
 
 <script>
   // ===== NAV SCROLL =====
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+  // ===== SCROLL-TOP: avoid footer overlap =====
+  (function () {
+    const btn = document.getElementById('scroll-top');
+    const footer = document.querySelector('footer');
+    const defaultBottom = 32;
+    function adjustBtn() {
+      if (!btn || !footer) return;
+      const footerTop = footer.getBoundingClientRect().top;
+      const gap = window.innerHeight - footerTop;
+      if (gap <= 0) {
+        btn.style.bottom = defaultBottom + 'px';
+      } else {
+        // Cap: button never goes higher than 45% from viewport bottom
+        const cap = Math.floor(window.innerHeight * 0.45);
+        btn.style.bottom = Math.min(gap + defaultBottom, cap) + 'px';
+      }
+    }
+    window.addEventListener('scroll', adjustBtn, { passive: true });
+  })();
   // On hero pages nav starts transparent; scrolled class is only added on scroll
 
   // ===== HAMBURGER MENU =====
