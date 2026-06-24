@@ -899,13 +899,13 @@ body {
 
 <!-- HERO SLIDER -->
 <section class="hero">
-  <div class="slide slide-1 active"></div>
-  <div class="slide slide-2"></div>
-  <div class="slide slide-3"></div>
+  <div class="slide slide-1 active" data-cms-img="home.hero.slide1"></div>
+  <div class="slide slide-2" data-cms-img="home.hero.slide2"></div>
+  <div class="slide slide-3" data-cms-img="home.hero.slide3"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow" data-it="Laterina Pergine Valdarno · Arezzo · Toscana" data-en="Laterina Pergine Valdarno · Arezzo · Tuscany">Laterina Pergine Valdarno · Arezzo · Tuscany</p>
-    <h1 class="hero-title">Le <em>Carpanelle</em></h1>
-    <p class="hero-sub" data-it="Olio, Miele, Ortaggi ed Ospitalità nel cuore del Valdarno" data-en="Olive Oil, Honey, Vegetables &amp; Hospitality in the heart of the Valdarno">Olive Oil, Honey, Vegetables &amp; Hospitality in the heart of the Valdarno</p>
+    <p class="hero-eyebrow" data-cms-field="home.hero.eyebrow" data-it="Laterina Pergine Valdarno · Arezzo · Toscana" data-en="Laterina Pergine Valdarno · Arezzo · Tuscany">Laterina Pergine Valdarno · Arezzo · Tuscany</p>
+    <h1 class="hero-title" data-cms-field="home.hero.title">Le <em>Carpanelle</em></h1>
+    <p class="hero-sub" data-cms-field="home.hero.subtitle" data-it="Olio, Miele, Ortaggi ed Ospitalità nel cuore del Valdarno" data-en="Olive Oil, Honey, Vegetables &amp; Hospitality in the heart of the Valdarno">Olive Oil, Honey, Vegetables &amp; Hospitality in the heart of the Valdarno</p>
     <span class="hero-cta" onclick="scrollToSection('benvenuto')" data-it="Scopri di più" data-en="Discover more">Discover more</span>
   </div>
   <div class="hero-dots">
@@ -971,6 +971,7 @@ body {
     <p class="section-label" data-it="Cosa dicono di noi" data-en="What our guests say">What our guests say</p>
     <h2 class="section-title" style="font-size: clamp(2rem,3vw,3rem); text-align:center;" data-it="Le loro <em>esperienze</em>" data-en="Their <em>experiences</em>">Their <em>experiences</em></h2>
   </div>
+<!-- CMS:REVIEWS_START -->
   <div class="reviews-grid">
     <div class="review-card">
       <div class="review-quote">"</div>
@@ -994,6 +995,7 @@ body {
       <p class="review-source">Google</p>
     </div>
   </div>
+<!-- CMS:REVIEWS_END -->
   <div class="reviews-cta">
     <a href="https://www.google.com/maps/place/Claudia+B%26B" target="_blank" rel="noopener" data-it="Leggi su Google" data-en="Read on Google">Read on Google</a>
     <a href="https://www.facebook.com/profile.php?id=100054376487585" target="_blank" rel="noopener" data-it="Leggi su Facebook" data-en="Read on Facebook">Read on Facebook</a>
@@ -1007,8 +1009,8 @@ body {
   <!-- Hero — full viewport, nav overlays -->
   <div class="contatti-hero">
     <div class="contatti-hero-text">
-      <p class="section-label" data-it="Dove siamo" data-en="Find us">Find us</p>
-      <h1 data-it="<em>Contatti</em> e Mappa" data-en="<em>Contact</em> & Map"><em>Contact</em> &amp; Map</h1>
+      <p class="section-label" data-cms-field="contatti.hero.label" data-it="Dove siamo" data-en="Find us">Find us</p>
+      <h1 data-cms-field="contatti.hero.title" data-it="<em>Contatti</em> e Mappa" data-en="<em>Contact</em> & Map"><em>Contact</em> &amp; Map</h1>
     </div>
   </div>
 
@@ -1076,9 +1078,9 @@ body {
   <!-- Hero — full viewport, nav overlays like homepage -->
   <div class="bb-page-hero">
     <div class="bb-page-hero-text">
-      <p class="section-label" data-it="Soggiorno · Laterina Pergine Valdarno" data-en="Stay · Laterina Pergine Valdarno">Stay · Laterina Pergine Valdarno</p>
-      <h1><em>Claudia</em> B&amp;B</h1>
-      <p data-it="Due camere nel cuore del Valdarno Toscano" data-en="Two rooms in the heart of the Tuscan Valdarno">Two rooms in the heart of the Tuscan Valdarno</p>
+      <p class="section-label" data-cms-field="bb.hero.label" data-it="Soggiorno · Laterina Pergine Valdarno" data-en="Stay · Laterina Pergine Valdarno">Stay · Laterina Pergine Valdarno</p>
+      <h1 data-cms-field="bb.hero.title"><em>Claudia</em> B&amp;B</h1>
+      <p data-cms-field="bb.hero.subtitle" data-it="Due camere nel cuore del Valdarno Toscano" data-en="Two rooms in the heart of the Tuscan Valdarno">Two rooms in the heart of the Tuscan Valdarno</p>
     </div>
   </div>
 
@@ -1134,28 +1136,13 @@ body {
         <div class="bb-feature-icon">🛏️</div>
         <h3 data-it="Due Camere Doppie" data-en="Two Double Rooms">Two Double Rooms</h3>
         <p data-it="Ambienti curati e confortevoli, con biancheria di qualità e attenzione ai dettagli.<br><br>" data-en="Carefully furnished and comfortable spaces, with quality linen and attention to detail.">Carefully furnished and comfortable spaces, with quality linen and attention to detail.</p>
-      <p  data-it="Prezzi soggiorno: <br>camera singola 35€ (senza prima colazione - costo 5€);<br> Camera doppia 60€ (inclusa prima colazione); <br> Pagamenti POS accettati! <br>" data-en="Accommodation prices:<br>  Single room €35 (without breakfast - €5);<br>  Double room €60 (including breakfast);<br> Card payments accepted! <br>">Accommodation prices:  Single room €35 (without breakfast - €5)  Double room €60 (including breakfast) POS payments accepted (Visa, Mastercard, Apple Pay, Google Pay, etc.)
-        <!-- Iconos de pagos con código hexadecimal -->
-
-            <div style="display: flex; gap: 10px; align-items: center; margin: 20px 0;">
-              <!-- Iconos de pagos con Font Awesome (sin fondo) -->
-              <div style="display: flex; gap: 10px; align-items: center; margin-left: 10px;">
-
-                <!-- Visa (Rojo oficial) -->
-                <i class="fa-brands fa-cc-visa" style="font-size: 32px; color: #1A1F71;"></i>
-
-                <!-- Mastercard -->
-                <i class="fa-brands fa-cc-mastercard" style="font-size: 32px; color: #EB001B;"></i>
-
-                <!-- Apple Pay -->
-                <i class="fa-brands fa-apple-pay" style="font-size: 32px; color: #000;"></i>
-
-                <!-- Google Pay -->
-                <i class="fa-brands fa-google-pay" style="font-size: 32px; color: #4285F4;"></i>
-
-              </div>
-
-            </div></p>
+      <p data-cms-field="bb.prices" data-it="Prezzi soggiorno: camera singola 35€ (senza colazione, disponibile a 5€); Camera doppia 60€ (colazione inclusa). Pagamenti POS accettati." data-en="Accommodation prices: Single room €35 (without breakfast, available at €5); Double room €60 (breakfast included). Card payments accepted.">Accommodation prices: Single room €35 (without breakfast, available at €5); Double room €60 (breakfast included). Card payments accepted.</p>
+      <div style="display: flex; gap: 10px; align-items: center; margin: 12px 0 0 0;">
+        <i class="fa-brands fa-cc-visa" style="font-size: 32px; color: #1A1F71;"></i>
+        <i class="fa-brands fa-cc-mastercard" style="font-size: 32px; color: #EB001B;"></i>
+        <i class="fa-brands fa-apple-pay" style="font-size: 32px; color: #000;"></i>
+        <i class="fa-brands fa-google-pay" style="font-size: 32px; color: #4285F4;"></i>
+      </div>
       </div>
     </div>
 
@@ -1164,9 +1151,9 @@ body {
       <div class="massage-image" role="img" aria-label="Massaggio rilassante"></div>
       <div class="massage-text">
         <p class="section-label" data-it="Benessere in struttura" data-en="Wellness on site">Wellness on site</p>
-        <h2 class="section-title" data-it="Massaggio <em>rilassante</em> e decontratturante" data-en="Relaxing &amp; <em>decontracting</em> massage">Relaxing &amp; <em>decontracting</em> massage</h2>
+        <h2 class="section-title" data-cms-field="bb.massage.title" data-it="Massaggio <em>rilassante</em> e decontratturante" data-en="Relaxing &amp; <em>decontracting</em> massage">Relaxing &amp; <em>decontracting</em> massage</h2>
         <div class="divider"></div>
-        <p class="section-body" data-it="In un ambiente curato e confortevole, Claudia si prenderà cura dei nostri ospiti con un massaggio rilassante o decontratturante, direttamente in struttura." data-en="In a carefully furnished and comfortable space, Claudia will take care of you with a relaxing or decontracting massage, directly on site.">In a carefully furnished and comfortable space, Claudia will take care of you with a relaxing or decontracting massage, directly on site.</p>
+        <p class="section-body" data-cms-field="bb.massage.body" data-it="In un ambiente curato e confortevole, Claudia si prenderà cura dei nostri ospiti con un massaggio rilassante o decontratturante, direttamente in struttura." data-en="In a carefully furnished and comfortable space, Claudia will take care of you with a relaxing or decontracting massage, directly on site.">In a carefully furnished and comfortable space, Claudia will take care of you with a relaxing or decontracting massage, directly on site.</p>
         <div style="margin-top:2rem;">
           <a href="https://api.whatsapp.com/send?phone=393311474808&text=Hello,%20I%20would%20like%20to%20book%20a%20massage%20at%20Le%20Carpanelle" target="_blank" rel="noopener" class="bb-book" data-it="Prenota un massaggio" data-en="Book a massage">Book a massage</a>
         </div>
@@ -1177,9 +1164,9 @@ body {
 
   <!-- Photo gallery strip — last element of the page -->
   <div class="bb-gallery">
-    <div class="bb-gal-img bb-gal-1"></div>
-    <div class="bb-gal-img bb-gal-2"></div>
-    <div class="bb-gal-img bb-gal-3"></div>
+    <div class="bb-gal-img bb-gal-1" data-cms-img="bb.gallery.1"></div>
+    <div class="bb-gal-img bb-gal-2" data-cms-img="bb.gallery.2"></div>
+    <div class="bb-gal-img bb-gal-3" data-cms-img="bb.gallery.3"></div>
   </div>
 
 </div><!-- end page-bb -->
@@ -1191,9 +1178,9 @@ body {
   <!-- Hero Section (Opcional, mantener si tienes un título aquí) -->
   <div class="gg-page-hero">
     <div class="bb-page-hero-text">
-      <p style="color: var(--white);" class="section-label" data-it="Galleria · Laterina Pergine Valdarno" data-en="Gallery · Laterina Pergine Valdarno">Gallery · Laterina Pergine Valdarno</p>
-      <h1 style="color: var(--white);"><em>Le Carpanelle</em></h1>
-      <p style="font-weight:400;" data-it="La nostra azienda in <em>immagini!</em> " data-en="Photogallery">Photogallery</p>
+      <p style="color: var(--white);" class="section-label" data-cms-field="gallery.hero.label" data-it="Galleria · Laterina Pergine Valdarno" data-en="Gallery · Laterina Pergine Valdarno">Gallery · Laterina Pergine Valdarno</p>
+      <h1 style="color: var(--white);" data-cms-field="gallery.hero.title"><em>Le Carpanelle</em></h1>
+      <p style="font-weight:400;" data-cms-field="gallery.hero.subtitle" data-it="La nostra azienda in <em>immagini!</em> " data-en="Photogallery">Photogallery</p>
     </div>
     <!-- Si necesitas título aquí, puedes agregarlo, pero el código original estaba vacío -->
   </div>
@@ -1206,6 +1193,7 @@ body {
     </div>
 
     <!-- GALLERY GRID -->
+<!-- CMS:GALLERY_GRID_START -->
 <div class="gallery-grid">
 
 <!-- Item 1 -->
@@ -1421,6 +1409,7 @@ body {
 <div class="gallery-bg" style="background-image: url('immagini/galleria/uva.jpg');"></div>
 </div>
 </div> <!--- end gallery-grid -->
+<!-- CMS:GALLERY_GRID_END -->
 <div>
 <p style="font-size: 1rem; color: #3a3228; font-weight: 400; letter-spacing: 0.1em; margin-top: 1rem; text-align: center;" data-it="... la storia <em>continua!</em> " data-en="...to be continue!">...to be continue!</p>
 </div>

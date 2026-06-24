@@ -1,0 +1,27 @@
+name                = "lecarpanelle-cms-api"
+main                = "src/index.js"
+compatibility_date  = "2024-09-23"
+
+# ── KV namespace ──────────────────────────────────────────────────────────────
+[[kv_namespaces]]
+binding    = "CMS_KV"
+id         = "9d3a5bb384244537970163a6fff4aca2"
+preview_id = "9d3a5bb384244537970163a6fff4aca2"
+
+# ── R2 bucket ─────────────────────────────────────────────────────────────────
+[[r2_buckets]]
+binding     = "CMS_R2"
+bucket_name = "lecarpanelle-images"
+
+# ── Public vars ───────────────────────────────────────────────────────────────
+[vars]
+GITHUB_OWNER  = "eddywebdesign"
+GITHUB_REPO   = "cloudfare"
+R2_PUBLIC_URL = "https://pub-497db6e0c76145839776213c776e157c.r2.dev"
+
+# ── Route: intercetta /api/* sul dominio Pages ────────────────────────────────
+# Attivare nel Dashboard → Worker → Settings → Triggers → Routes
+# oppure decommentare qui dopo aver collegato la zona DNS lecarpanelle.it
+# [[routes]]
+# pattern = "www.lecarpanelle.it/api/*"
+# zone_name = "lecarpanelle.it"

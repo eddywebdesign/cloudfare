@@ -1,0 +1,8 @@
+# Copia questo file in .dev.vars per lo sviluppo locale (wrangler pages dev)
+# NON committare .dev.vars — è già in .gitignore
+
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=cambiami-con-password-sicura
+JWT_SECRET=genera-stringa-casuale-64-caratteri
+GITHUB_TOKEN=ghp_...il-tuo-personal-access-token
+R2_PUBLIC_URL=https://pub-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.r2.dev
