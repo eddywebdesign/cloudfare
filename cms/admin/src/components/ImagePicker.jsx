@@ -2,10 +2,14 @@ import { useState, useCallback } from 'react';
 import { X, Upload, Image as ImageIcon } from 'lucide-react';
 import api from '../api/client.js';
 
-// ImagePicker: shows current image thumbnail + button to open modal.
-// Modal: grid of R2 images + upload new image.
-// value: URL string (absolute R2 URL or relative site path)
-// onChange: (url: string) => void
+// Site images are stored as relative paths (immagini/slide1.jpg).
+// When the CMS admin runs at /cms/, relative URLs break — prefix with / to resolve from root.
+function toPreviewUrl(v) {
+  if (!v) return '';
+  if (v.startsWith('http') || v.startsWith('/')) return v;
+  return `/${v}`;
+}
+
 export default function ImagePicker({ label, value, onChange }) {
   const [open,      setOpen]      = useState(false);
   const [images,    setImages]    = useState([]);
@@ -49,7 +53,7 @@ export default function ImagePicker({ label, value, onChange }) {
         {label && <p className="text-sm font-medium text-slate-700 mb-2">{label}</p>}
         <div className="flex items-center gap-3">
           {value ? (
-            <img src={value} alt="" className="w-24 h-16 object-cover rounded-lg border border-slate-200 shrink-0" />
+            <img src={toPreviewUrl(value)} alt="" className="w-24 h-16 object-cover rounded-lg border border-slate-200 shrink-0" />
           ) : (
             <div className="w-24 h-16 rounded-lg border-2 border-dashed border-slate-200 flex items-center justify-center shrink-0">
               <ImageIcon size={18} className="text-slate-300" />
