@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+﻿import { useState, useEffect, useCallback } from 'react';
 import { Upload, Trash2, Copy, Check } from 'lucide-react';
 import api from '../api/client.js';
 import { useToast } from '../components/Layout.jsx';
@@ -61,11 +61,11 @@ export default function Images() {
     <div className="p-6 max-w-4xl mx-auto">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-xl font-bold text-slate-800">Libreria immagini</h1>
-          <p className="text-sm text-slate-500 mt-0.5">{images.length} immagine/i caricate</p>
+          <h1 className="text-xl font-bold text-carp-brown">Libreria immagini</h1>
+          <p className="text-sm text-carp-muted mt-0.5">{images.length} immagine/i caricate</p>
         </div>
         <label className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition-colors ${
-          uploading ? 'bg-slate-200 text-slate-400 cursor-not-allowed' : 'bg-amber-500 hover:bg-amber-600 text-white'
+          uploading ? 'bg-slate-200 text-carp-muted cursor-not-allowed' : 'bg-carp-gold hover:bg-carp-brown text-white'
         }`}>
           <Upload size={14} />
           {uploading ? 'Caricamento…' : 'Carica immagini'}
@@ -74,31 +74,31 @@ export default function Images() {
       </div>
 
       {loading ? (
-        <p className="text-sm text-slate-400">Caricamento…</p>
+        <p className="text-sm text-carp-muted">Caricamento…</p>
       ) : images.length === 0 ? (
-        <p className="text-sm text-slate-400">Nessuna immagine caricata</p>
+        <p className="text-sm text-carp-muted">Nessuna immagine caricata</p>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {images.map(img => (
-            <div key={img.key} className="group relative bg-white border border-slate-200 rounded-xl overflow-hidden">
-              <div className="aspect-video bg-slate-100">
+            <div key={img.key} className="group relative bg-carp-warm border border-carp-border rounded-xl overflow-hidden">
+              <div className="aspect-video bg-carp-cream">
                 <img src={img.url} alt="" className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="p-2">
-                <p className="text-xs text-slate-600 truncate">{img.key.replace('uploads/', '')}</p>
-                <p className="text-xs text-slate-400">{fmtSize(img.size)}</p>
+                <p className="text-xs text-carp-muted truncate">{img.key.replace('uploads/', '')}</p>
+                <p className="text-xs text-carp-muted">{fmtSize(img.size)}</p>
               </div>
               <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                 <button
                   onClick={() => copy(img.url)}
-                  className="p-1.5 bg-white rounded-lg shadow text-slate-600 hover:text-amber-600 transition-colors"
+                  className="p-1.5 bg-white rounded-lg shadow text-carp-muted hover:text-amber-600 transition-colors"
                   title="Copia URL"
                 >
                   {copied === img.url ? <Check size={12} className="text-emerald-500" /> : <Copy size={12} />}
                 </button>
                 <button
                   onClick={() => remove(img.key)}
-                  className="p-1.5 bg-white rounded-lg shadow text-slate-600 hover:text-red-500 transition-colors"
+                  className="p-1.5 bg-white rounded-lg shadow text-carp-muted hover:text-red-500 transition-colors"
                   title="Elimina"
                 >
                   <Trash2 size={12} />

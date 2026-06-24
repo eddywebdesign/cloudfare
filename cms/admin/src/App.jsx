@@ -12,7 +12,7 @@ import Images       from './pages/Images.jsx';
 
 function Guard({ children }) {
   const { user, loading } = useAuth();
-  if (loading) return <div className="min-h-screen bg-slate-50 flex items-center justify-center text-sm text-slate-400">Caricamento…</div>;
+  if (loading) return <div className="min-h-screen bg-carp-cream flex items-center justify-center text-sm text-carp-muted">Caricamento…</div>;
   return user ? children : <Navigate to="/login" replace />;
 }
 

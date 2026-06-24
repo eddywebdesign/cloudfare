@@ -58,7 +58,7 @@ export default function PageShell({ title, subtitle, onSave, children }) {
             type="button"
             onClick={handlePublish}
             disabled={saving || publishing}
-            className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium bg-amber-500 hover:bg-amber-600 text-white rounded-lg disabled:opacity-50 transition-colors"
+            className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium bg-carp-gold hover:bg-carp-brown text-white rounded-lg disabled:opacity-50 transition-colors"
           >
             {publishing ? <Loader2 size={14} className="animate-spin" /> : <Globe size={14} />}
             Pubblica

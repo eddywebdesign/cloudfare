@@ -46,7 +46,7 @@ export default function Layout() {
 
   return (
     <ToastCtx.Provider value={showToast}>
-      <div className="flex h-screen bg-slate-50">
+      <div className="flex h-screen bg-carp-cream">
         <Sidebar />
         <main className="flex-1 overflow-y-auto">
           <Outlet />
@@ -55,7 +55,7 @@ export default function Layout() {
 
       {/* Idle-logout warning banner */}
       {idleWarn && (
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 bg-amber-600 text-white text-sm font-medium px-5 py-3 rounded-xl shadow-lg">
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 bg-carp-gold text-white text-sm font-medium px-5 py-3 rounded-xl shadow-lg">
           <span>Sessione in scadenza tra 1 minuto per inattività</span>
           <button
             onClick={resetTimer}

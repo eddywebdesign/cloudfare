@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-const INPUT_CLS = 'w-full px-2.5 py-1.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white';
-const INPUT_ACCENT_CLS = 'w-full px-2.5 py-1.5 border border-amber-300 rounded-lg text-sm italic focus:outline-none focus:ring-2 focus:ring-amber-400 bg-amber-50';
+const INPUT_CLS = 'w-full px-2.5 py-1.5 border border-carp-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-carp-lt bg-carp-warm';
+const INPUT_ACCENT_CLS = 'w-full px-2.5 py-1.5 border border-carp-lt rounded-lg text-sm italic focus:outline-none focus:ring-2 focus:ring-carp-lt bg-carp-cream';
 
 // Bilingual tab switcher — wraps any field that has IT and EN variants.
 // Usage:
@@ -10,14 +10,14 @@ const INPUT_ACCENT_CLS = 'w-full px-2.5 py-1.5 border border-amber-300 rounded-l
 
 function Tabs({ lang, onChange }) {
   return (
-    <div className="flex gap-1 bg-slate-100 p-0.5 rounded-lg w-fit">
+    <div className="flex gap-1 bg-carp-cream p-0.5 rounded-lg w-fit">
       {['it', 'en'].map(l => (
         <button
           key={l}
           type="button"
           onClick={() => onChange(l)}
           className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-colors ${
-            lang === l ? 'bg-white shadow-sm text-slate-800' : 'text-slate-400 hover:text-slate-600'
+            lang === l ? 'bg-white shadow-sm text-carp-brown' : 'text-carp-muted hover:text-carp-brown'
           }`}
         >
           {l === 'it' ? '🇮🇹 IT' : '🇬🇧 EN'}
@@ -40,7 +40,7 @@ export function BilingualInput({ label, value = {}, onChange, placeholder }) {
         value={value[lang] ?? ''}
         onChange={e => onChange({ ...value, [lang]: e.target.value })}
         placeholder={placeholder}
-        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white"
+        className="w-full px-3 py-2 border border-carp-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-carp-lt bg-carp-warm"
       />
     </div>
   );
@@ -65,7 +65,7 @@ function TitleParts({ value = {}, onChange }) {
             placeholder="es. Le" className={INPUT_CLS} />
         </div>
         <div>
-          <label className="text-xs text-amber-600 font-semibold mb-1 block">In corsivo</label>
+          <label className="text-xs text-carp-gold font-semibold mb-1 block">In corsivo</label>
           <input type="text" value={value.accent ?? ''} onChange={e => set({ accent: e.target.value })}
             placeholder="es. Carpanelle" className={INPUT_ACCENT_CLS} />
         </div>
@@ -78,7 +78,7 @@ function TitleParts({ value = {}, onChange }) {
       {preview && (
         <p className="text-xs text-slate-400">
           Anteprima: {value.before?.trim() && <span>{value.before.trim()} </span>}
-          {value.accent?.trim() && <em className="text-amber-600 not-italic font-semibold">{value.accent.trim()}</em>}
+          {value.accent?.trim() && <em className="text-carp-gold not-italic font-semibold">{value.accent.trim()}</em>}
           {value.after?.trim() && <span> {value.after.trim()}</span>}
         </p>
       )}
@@ -125,7 +125,7 @@ export function BilingualTextarea({ label, value = {}, onChange, rows = 3, place
         value={value[lang] ?? ''}
         onChange={e => onChange({ ...value, [lang]: e.target.value })}
         placeholder={placeholder}
-        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 resize-y bg-white"
+        className="w-full px-3 py-2 border border-carp-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-carp-lt resize-y bg-carp-warm"
       />
     </div>
   );

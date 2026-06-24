@@ -1,22 +1,22 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import api from '../api/client.js';
 import PageShell from '../components/PageShell.jsx';
 import ImagePicker from '../components/ImagePicker.jsx';
 import { BilingualInput, BilingualTextarea, TitleField, BilingualTitle } from '../components/LangTabs.jsx';
 
 function Section({ title }) {
-  return <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider pt-6 pb-2 border-t border-slate-100">{title}</h2>;
+  return <h2 className="text-sm font-semibold text-carp-muted uppercase tracking-wider pt-6 pb-2 border-t border-carp-border">{title}</h2>;
 }
 
 function Field({ label, value, onChange }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-slate-700 mb-1.5">{label}</label>
+      <label className="block text-sm font-medium text-carp-brown mb-1.5">{label}</label>
       <input
         type="text"
         value={value ?? ''}
         onChange={e => onChange(e.target.value)}
-        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white"
+        className="w-full px-3 py-2 border border-carp-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-carp-lt bg-carp-warm"
       />
     </div>
   );
@@ -38,7 +38,7 @@ export default function PageBB() {
 
   const save = () => api.put('/content/bb', data);
 
-  if (!data) return <div className="p-6 text-sm text-slate-400">Caricamento…</div>;
+  if (!data) return <div className="p-6 text-sm text-carp-muted">Caricamento…</div>;
 
   return (
     <PageShell title="Claudia B&B" subtitle="Hero, prezzi, massaggio e gallery strip" onSave={save}>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Plus, Trash2 } from 'lucide-react';
 import api from '../api/client.js';
 import PageShell from '../components/PageShell.jsx';
@@ -8,19 +8,19 @@ import { BilingualInput, BilingualTextarea, TitleField } from '../components/Lan
 function Field({ label, value, onChange }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-slate-700 mb-1.5">{label}</label>
+      <label className="block text-sm font-medium text-carp-brown mb-1.5">{label}</label>
       <input
         type="text"
         value={value ?? ''}
         onChange={e => onChange(e.target.value)}
-        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white"
+        className="w-full px-3 py-2 border border-carp-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-carp-lt bg-carp-warm"
       />
     </div>
   );
 }
 
 function Section({ title }) {
-  return <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider pt-6 pb-2 border-t border-slate-100">{title}</h2>;
+  return <h2 className="text-sm font-semibold text-carp-muted uppercase tracking-wider pt-6 pb-2 border-t border-carp-border">{title}</h2>;
 }
 
 export default function PageHome() {
@@ -51,7 +51,7 @@ export default function PageHome() {
 
   const save = () => api.put('/content/home', data);
 
-  if (!data) return <div className="p-6 text-sm text-slate-400">Caricamento…</div>;
+  if (!data) return <div className="p-6 text-sm text-carp-muted">Caricamento…</div>;
 
   return (
     <PageShell title="Homepage" subtitle="Hero slider e recensioni" onSave={save}>
@@ -92,10 +92,10 @@ export default function PageHome() {
         <Section title="Recensioni" />
         <div className="space-y-4">
           {(data.reviews ?? []).map((r, i) => (
-            <div key={i} className="bg-white border border-slate-200 rounded-xl p-4 space-y-3">
+            <div key={i} className="bg-carp-warm border border-carp-border rounded-xl p-4 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Recensione {i + 1}</span>
-                <button type="button" onClick={() => removeReview(i)} className="p-1 text-slate-400 hover:text-red-500 transition-colors">
+                <span className="text-xs font-semibold text-carp-muted uppercase tracking-wider">Recensione {i + 1}</span>
+                <button type="button" onClick={() => removeReview(i)} className="p-1 text-carp-muted hover:text-red-500 transition-colors">
                   <Trash2 size={14} />
                 </button>
               </div>
@@ -115,7 +115,7 @@ export default function PageHome() {
         <button
           type="button"
           onClick={addReview}
-          className="flex items-center gap-2 text-sm text-amber-600 hover:text-amber-700 font-medium"
+          className="flex items-center gap-2 text-sm text-carp-gold hover:text-carp-brown font-medium"
         >
           <Plus size={15} />
           Aggiungi recensione

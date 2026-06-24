@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import api from '../api/client.js';
 import PageShell from '../components/PageShell.jsx';
 
 function Field({ label, value, onChange, type = 'text', hint }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-slate-700 mb-1.5">{label}</label>
+      <label className="block text-sm font-medium text-carp-brown mb-1.5">{label}</label>
       <input
         type={type}
         value={value ?? ''}
         onChange={e => onChange(e.target.value)}
-        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white"
+        className="w-full px-3 py-2 border border-carp-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-carp-lt bg-carp-warm"
       />
-      {hint && <p className="text-xs text-slate-400 mt-1">{hint}</p>}
+      {hint && <p className="text-xs text-carp-muted mt-1">{hint}</p>}
     </div>
   );
 }

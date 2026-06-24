@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Plus, Trash2, ChevronUp, ChevronDown } from 'lucide-react';
 import api from '../api/client.js';
 import PageShell from '../components/PageShell.jsx';
@@ -10,20 +10,20 @@ const SPANS = [1, 2, 3];
 function Field({ label, value, onChange, placeholder }) {
   return (
     <div>
-      <label className="block text-xs font-medium text-slate-600 mb-1">{label}</label>
+      <label className="block text-xs font-medium text-carp-muted mb-1">{label}</label>
       <input
         type="text"
         value={value ?? ''}
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full px-2.5 py-1.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white"
+        className="w-full px-2.5 py-1.5 border border-carp-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-carp-lt bg-carp-warm"
       />
     </div>
   );
 }
 
 function Section({ title }) {
-  return <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider pt-6 pb-2 border-t border-slate-100">{title}</h2>;
+  return <h2 className="text-sm font-semibold text-carp-muted uppercase tracking-wider pt-6 pb-2 border-t border-carp-border">{title}</h2>;
 }
 
 export default function PageGallery() {
@@ -62,7 +62,7 @@ export default function PageGallery() {
 
   const save = () => api.put('/content/gallery', data);
 
-  if (!data) return <div className="p-6 text-sm text-slate-400">Caricamento…</div>;
+  if (!data) return <div className="p-6 text-sm text-carp-muted">Caricamento…</div>;
 
   return (
     <PageShell title="Galleria" subtitle="Hero e griglia fotografica" onSave={save}>
@@ -80,11 +80,11 @@ export default function PageGallery() {
 
         <div className="space-y-3">
           {(data.items ?? []).map((item, i) => (
-            <div key={i} className="bg-white border border-slate-200 rounded-xl p-4 flex gap-4 items-start">
+            <div key={i} className="bg-carp-warm border border-carp-border rounded-xl p-4 flex gap-4 items-start">
               {/* Move up/down */}
               <div className="flex flex-col gap-1 shrink-0 mt-1">
-                <button type="button" onClick={() => moveUp(i)}   disabled={i === 0}                       className="p-1 rounded text-slate-400 hover:text-slate-700 disabled:opacity-20 transition-colors"><ChevronUp   size={14} /></button>
-                <button type="button" onClick={() => moveDown(i)} disabled={i === data.items.length - 1}   className="p-1 rounded text-slate-400 hover:text-slate-700 disabled:opacity-20 transition-colors"><ChevronDown size={14} /></button>
+                <button type="button" onClick={() => moveUp(i)}   disabled={i === 0}                       className="p-1 rounded text-carp-muted hover:text-carp-brown disabled:opacity-20 transition-colors"><ChevronUp   size={14} /></button>
+                <button type="button" onClick={() => moveDown(i)} disabled={i === data.items.length - 1}   className="p-1 rounded text-carp-muted hover:text-carp-brown disabled:opacity-20 transition-colors"><ChevronDown size={14} /></button>
               </div>
 
               {/* Image */}
@@ -100,7 +100,7 @@ export default function PageGallery() {
                 </div>
                 {/* Span selector */}
                 <div>
-                  <label className="text-xs font-medium text-slate-600 block mb-1">Larghezza griglia</label>
+                  <label className="text-xs font-medium text-carp-muted block mb-1">Larghezza griglia</label>
                   <div className="flex gap-1">
                     {SPANS.map(s => (
                       <button
@@ -109,8 +109,8 @@ export default function PageGallery() {
                         onClick={() => setItem(i, { span: s })}
                         className={`px-3 py-1 rounded-md text-xs font-semibold transition-colors ${
                           item.span === s
-                            ? 'bg-amber-500 text-white'
-                            : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                            ? 'bg-carp-gold text-white'
+                            : 'bg-carp-cream text-carp-brown hover:bg-carp-border'
                         }`}
                       >
                         {s === 1 ? 'Piccola' : s === 2 ? 'Media' : 'Grande'}
@@ -121,7 +121,7 @@ export default function PageGallery() {
               </div>
 
               {/* Delete */}
-              <button type="button" onClick={() => remove(i)} className="p-1 text-slate-400 hover:text-red-500 transition-colors shrink-0">
+              <button type="button" onClick={() => remove(i)} className="p-1 text-carp-muted hover:text-red-500 transition-colors shrink-0">
                 <Trash2 size={14} />
               </button>
             </div>
@@ -131,7 +131,7 @@ export default function PageGallery() {
         <button
           type="button"
           onClick={add}
-          className="flex items-center gap-2 text-sm text-amber-600 hover:text-amber-700 font-medium"
+          className="flex items-center gap-2 text-sm text-carp-gold hover:text-carp-brown font-medium"
         >
           <Plus size={15} />
           Aggiungi foto

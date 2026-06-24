@@ -94,8 +94,8 @@ export default function ImagePicker({ label, value, onChange }) {
             <div className="px-5 py-3 border-b bg-slate-50">
               <label className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition-colors ${
                 uploading
-                  ? 'bg-slate-200 text-slate-400 cursor-not-allowed'
-                  : 'bg-amber-500 hover:bg-amber-600 text-white'
+                  ? 'bg-carp-cream text-carp-muted cursor-not-allowed'
+                  : 'bg-carp-gold hover:bg-carp-brown text-white'
               }`}>
                 <Upload size={14} />
                 {uploading ? 'Caricamento…' : 'Carica nuova immagine'}
@@ -125,7 +125,7 @@ export default function ImagePicker({ label, value, onChange }) {
                       onClick={() => select(img.url)}
                       className="group text-left focus:outline-none"
                     >
-                      <div className="aspect-video rounded-lg overflow-hidden border-2 border-transparent group-hover:border-amber-400 transition-colors">
+                      <div className="aspect-video rounded-lg overflow-hidden border-2 border-transparent group-hover:border-carp-gold transition-colors">
                         <img src={img.url} alt="" className="w-full h-full object-cover" />
                       </div>
                       <p className="text-xs text-slate-500 truncate mt-1 px-0.5">{img.key.replace('uploads/', '')}</p>

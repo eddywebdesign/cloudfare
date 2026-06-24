@@ -17,15 +17,15 @@ export default function Sidebar() {
   const navigate = useNavigate();
 
   return (
-    <aside className="w-56 bg-slate-900 flex flex-col shrink-0">
-      <div className="p-4 border-b border-slate-700/60">
+    <aside className="w-56 bg-carp-dark flex flex-col shrink-0">
+      <div className="p-4 border-b border-white/10">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 bg-amber-600 rounded-lg flex items-center justify-center">
+          <div className="w-9 h-9 bg-carp-gold rounded-lg flex items-center justify-center">
             <Leaf size={17} className="text-white" />
           </div>
           <div>
             <p className="text-white font-semibold text-sm leading-none">Le Carpanelle</p>
-            <p className="text-slate-400 text-xs mt-0.5">CMS Admin</p>
+            <p className="text-white/45 text-xs mt-0.5">CMS Admin</p>
           </div>
         </div>
       </div>
@@ -39,8 +39,8 @@ export default function Sidebar() {
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                 isActive
-                  ? 'bg-amber-600 text-white'
-                  : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                  ? 'bg-carp-gold text-white'
+                  : 'text-white/70 hover:bg-white/10 hover:text-white'
               }`
             }
           >
@@ -50,16 +50,16 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <div className="p-3 border-t border-slate-700/60">
+      <div className="p-3 border-t border-white/10">
         <div className="flex items-center gap-2.5 px-3 py-2 mb-1">
-          <div className="w-7 h-7 bg-amber-600/20 rounded-full flex items-center justify-center text-xs text-amber-400 font-semibold">
+          <div className="w-7 h-7 bg-carp-gold/25 rounded-full flex items-center justify-center text-xs text-carp-lt font-semibold">
             {user?.username?.[0]?.toUpperCase()}
           </div>
-          <span className="text-slate-300 text-sm truncate">{user?.username}</span>
+          <span className="text-white/70 text-sm truncate">{user?.username}</span>
         </div>
         <button
           onClick={() => { logout(); navigate('/login'); }}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white/50 hover:bg-white/10 hover:text-white transition-colors"
         >
           <LogOut size={14} />
           Esci

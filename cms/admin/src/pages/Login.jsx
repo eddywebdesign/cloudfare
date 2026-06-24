@@ -25,17 +25,17 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-carp-dark flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-amber-600 rounded-2xl mb-4">
+          <div className="inline-flex items-center justify-center w-14 h-14 bg-carp-gold rounded-2xl mb-4">
             <Leaf size={26} className="text-white" />
           </div>
           <h1 className="text-white text-2xl font-bold">Le Carpanelle</h1>
-          <p className="text-slate-400 text-sm mt-1">Pannello di amministrazione</p>
+          <p className="text-white/50 text-sm mt-1">Pannello di amministrazione</p>
         </div>
 
-        <form onSubmit={submit} className="bg-slate-800 rounded-2xl p-6 space-y-4 border border-slate-700/50">
+        <form onSubmit={submit} className="bg-carp-brown/60 rounded-2xl p-6 space-y-4 border border-white/10">
           {error && (
             <div className="flex items-center gap-2 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm">
               <AlertCircle size={14} className="shrink-0" />
@@ -43,24 +43,24 @@ export default function Login() {
             </div>
           )}
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1.5">Username</label>
+            <label className="block text-sm font-medium text-white/80 mb-1.5">Username</label>
             <input
               type="text"
               value={form.username}
               onChange={e => setForm(p => ({ ...p, username: e.target.value }))}
-              className="w-full px-3 py-2.5 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="w-full px-3 py-2.5 bg-white/10 border border-white/15 rounded-lg text-white text-sm placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-carp-lt focus:border-transparent"
               placeholder="admin"
               autoComplete="username"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1.5">Password</label>
+            <label className="block text-sm font-medium text-white/80 mb-1.5">Password</label>
             <input
               type="password"
               value={form.password}
               onChange={e => setForm(p => ({ ...p, password: e.target.value }))}
-              className="w-full px-3 py-2.5 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="w-full px-3 py-2.5 bg-white/10 border border-white/15 rounded-lg text-white text-sm placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-carp-lt focus:border-transparent"
               placeholder="••••••••"
               autoComplete="current-password"
               required
@@ -69,7 +69,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg text-sm transition-colors disabled:opacity-50 mt-2"
+            className="w-full py-2.5 bg-carp-gold hover:bg-carp-brown text-white font-semibold rounded-lg text-sm transition-colors disabled:opacity-50 mt-2"
           >
             {loading ? 'Accesso in corso…' : 'Accedi'}
           </button>
