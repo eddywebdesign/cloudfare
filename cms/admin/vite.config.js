@@ -12,7 +12,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../dist',
-    emptyOutDir: true,
+    outDir: '..',          // builds directly into cms/ → served at /cms/ by Cloudflare Pages
+    emptyOutDir: false,    // don't delete cms/admin/ and cms/worker/
   },
 });

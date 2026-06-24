@@ -1,3 +1,4 @@
 .dev.vars
 cms/admin/node_modules/
-cms/admin/dist/
+cms/dist/
+cms/worker/node_modules/

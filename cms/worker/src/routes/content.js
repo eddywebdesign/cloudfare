@@ -5,11 +5,16 @@ export async function handleContent(request, env, pathname) {
   const section = pathname.replace(/^\/api\/content\/?/, '') || null;
 
   if (request.method === 'GET') {
-    const raw = await env.CMS_KV.get(KV_KEY);
-    if (!raw) return json({ error: 'Contenuto non inizializzato' }, 404);
+    let raw = await env.CMS_KV.get(KV_KEY);
+    if (!raw) {
+      // First access: seed KV with defaults so the admin loads immediately
+      const defaults = defaultContent();
+      await env.CMS_KV.put(KV_KEY, JSON.stringify(defaults));
+      raw = JSON.stringify(defaults);
+    }
     const content = JSON.parse(raw);
     if (!section) return json(content);
-    const data = section === 'global' ? content.global : content[section];
+    const data = content[section];
     if (!data) return json({ error: `Sezione '${section}' non trovata` }, 404);
     return json(data);
   }
