@@ -4,6 +4,21 @@ function esc(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+// Assembles a title from { before, accent, after } → "before <em>accent</em> after"
+// Accepts legacy plain strings too (backward compat).
+function buildTitle(t) {
+  if (!t) return '';
+  if (typeof t === 'string') return t;
+  const before = (t.before ?? '').trim();
+  const accent = (t.accent ?? '').trim();
+  const after  = (t.after  ?? '').trim();
+  const parts  = [];
+  if (before) parts.push(before);
+  if (accent) parts.push(`<em>${accent}</em>`);
+  if (after)  parts.push(after);
+  return parts.join(' ');
+}
+
 // ── Text fields (data-cms-field) ──────────────────────────────────────────────
 // Updates data-it, data-en attributes AND visible text content.
 // The client enters plain text; the CSS handles all visual styling.
@@ -90,7 +105,10 @@ export function applyContent(html, content) {
   // HOME ── hero text + slider images
   const h = content.home?.hero ?? {};
   if (h.eyebrow)  html = patchTextField(html, 'home.hero.eyebrow', h.eyebrow.it,  h.eyebrow.en);
-  if (h.title)    html = patchTextField(html, 'home.hero.title',   h.title,        h.title);
+  if (h.title) {
+    const t = buildTitle(h.title);
+    html = patchTextField(html, 'home.hero.title', t, t);
+  }
   if (h.subtitle) html = patchTextField(html, 'home.hero.subtitle',h.subtitle.it,  h.subtitle.en);
   if (h.slide1)   html = patchCssImage(html, 'slide-1', h.slide1);
   if (h.slide2)   html = patchCssImage(html, 'slide-2', h.slide2);
@@ -103,13 +121,20 @@ export function applyContent(html, content) {
   const c = content.contatti?.hero ?? {};
   if (c.image) html = patchCssImage(html, 'contatti-hero', c.image);
   if (c.label) html = patchTextField(html, 'contatti.hero.label', c.label.it, c.label.en);
-  if (c.title) html = patchTextField(html, 'contatti.hero.title', c.title.it, c.title.en);
+  if (c.title) {
+    const tIt = buildTitle(c.title.it ?? c.title);
+    const tEn = buildTitle(c.title.en ?? c.title);
+    html = patchTextField(html, 'contatti.hero.title', tIt, tEn);
+  }
 
   // BB ── hero
   const b = content.bb?.hero ?? {};
   if (b.image)    html = patchCssImage(html, 'bb-page-hero', b.image);
   if (b.label)    html = patchTextField(html, 'bb.hero.label',    b.label.it,    b.label.en);
-  if (b.title)    html = patchTextField(html, 'bb.hero.title',    b.title,       b.title);
+  if (b.title) {
+    const t = buildTitle(b.title);
+    html = patchTextField(html, 'bb.hero.title', t, t);
+  }
   if (b.subtitle) html = patchTextField(html, 'bb.hero.subtitle', b.subtitle.it, b.subtitle.en);
 
   // BB ── prices
@@ -120,7 +145,11 @@ export function applyContent(html, content) {
   // BB ── massage
   const m = content.bb?.massage ?? {};
   if (m.image) html = patchCssImage(html, 'massage-image', m.image);
-  if (m.title) html = patchTextField(html, 'bb.massage.title', m.title.it, m.title.en);
+  if (m.title) {
+    const tIt = buildTitle(m.title.it ?? m.title);
+    const tEn = buildTitle(m.title.en ?? m.title);
+    html = patchTextField(html, 'bb.massage.title', tIt, tEn);
+  }
   if (m.body)  html = patchTextField(html, 'bb.massage.body',  m.body.it,  m.body.en);
 
   // BB ── gallery strip (3 images)
@@ -133,7 +162,10 @@ export function applyContent(html, content) {
   const g = content.gallery?.hero ?? {};
   if (g.image)    html = patchCssImage(html, 'gg-page-hero', g.image);
   if (g.label)    html = patchTextField(html, 'gallery.hero.label',    g.label.it,    g.label.en);
-  if (g.title)    html = patchTextField(html, 'gallery.hero.title',    g.title,       g.title);
+  if (g.title) {
+    const t = buildTitle(g.title);
+    html = patchTextField(html, 'gallery.hero.title', t, t);
+  }
   if (g.subtitle) html = patchTextField(html, 'gallery.hero.subtitle', g.subtitle.it, g.subtitle.en);
 
   // GALLERY ── grid items (add/remove photos)

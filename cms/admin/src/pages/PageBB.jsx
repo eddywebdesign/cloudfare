@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import api from '../api/client.js';
 import PageShell from '../components/PageShell.jsx';
 import ImagePicker from '../components/ImagePicker.jsx';
-import { BilingualInput, BilingualTextarea } from '../components/LangTabs.jsx';
+import { BilingualInput, BilingualTextarea, TitleField, BilingualTitle } from '../components/LangTabs.jsx';
 
 function Section({ title }) {
   return <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider pt-6 pb-2 border-t border-slate-100">{title}</h2>;
@@ -48,7 +48,7 @@ export default function PageBB() {
         <Section title="Hero — immagine e testi" />
         <ImagePicker label="Immagine hero" value={data.hero?.image} onChange={url => setHero({ image: url })} />
         <BilingualInput label="Etichetta sopra il titolo" value={data.hero?.label} onChange={v => setHero({ label: v })} />
-        <Field label="Titolo (uguale IT e EN)" value={data.hero?.title} onChange={v => setHero({ title: v })} />
+        <TitleField label="Titolo (uguale IT e EN)" value={data.hero?.title} onChange={v => setHero({ title: v })} />
         <BilingualInput label="Sottotitolo" value={data.hero?.subtitle} onChange={v => setHero({ subtitle: v })} />
 
         {/* Prices */}
@@ -64,7 +64,7 @@ export default function PageBB() {
         {/* Massage */}
         <Section title="Sezione massaggio" />
         <ImagePicker label="Immagine massaggio" value={data.massage?.image} onChange={url => setMassage({ image: url })} />
-        <BilingualInput label="Titolo" value={data.massage?.title} onChange={v => setMassage({ title: v })} />
+        <BilingualTitle label="Titolo" value={data.massage?.title} onChange={v => setMassage({ title: v })} />
         <BilingualTextarea label="Testo descrizione" value={data.massage?.body} onChange={v => setMassage({ body: v })} rows={3} />
 
         {/* Gallery strip */}

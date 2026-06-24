@@ -56,7 +56,7 @@ function defaultContent() {
         slide2:   'immagini/slide2.jpg',
         slide3:   'immagini/slide3.jpg',
         eyebrow:  { it: 'Laterina Pergine Valdarno · Arezzo · Toscana',              en: 'Laterina Pergine Valdarno · Arezzo · Tuscany' },
-        title:    'Le <em>Carpanelle</em>',
+        title:    { before: 'Le', accent: 'Carpanelle', after: '' },
         subtitle: { it: 'Olio, Miele, Ortaggi ed Ospitalità nel cuore del Valdarno', en: 'Olive Oil, Honey, Vegetables & Hospitality in the heart of the Valdarno' },
       },
       reviews: [
@@ -69,14 +69,17 @@ function defaultContent() {
       hero: {
         image: 'immagini/cartelLecarpanelleantiguo.jpg',
         label: { it: 'Dove siamo', en: 'Find us' },
-        title: { it: '<em>Contatti</em> e Mappa', en: '<em>Contact</em> & Map' },
+        title: {
+          it: { before: '', accent: 'Contatti', after: 'e Mappa' },
+          en: { before: '', accent: 'Contact',  after: '& Map'   },
+        },
       },
     },
     bb: {
       hero: {
         image:    'immagini/B&BClaudia.jpg',
         label:    { it: 'Soggiorno · Laterina Pergine Valdarno', en: 'Stay · Laterina Pergine Valdarno' },
-        title:    '<em>Claudia</em> B&B',
+        title:    { before: '', accent: 'Claudia', after: 'B&B' },
         subtitle: { it: 'Due camere nel cuore del Valdarno Toscano', en: 'Two rooms in the heart of the Tuscan Valdarno' },
       },
       prices: {
@@ -85,7 +88,10 @@ function defaultContent() {
       },
       massage: {
         image: 'immagini/massage.jpg',
-        title: { it: 'Massaggio <em>rilassante</em> e decontratturante',                                                                           en: 'Relaxing & <em>decontracting</em> massage' },
+        title: {
+          it: { before: 'Massaggio', accent: 'rilassante',    after: 'e decontratturante' },
+          en: { before: 'Relaxing &', accent: 'decontracting', after: 'massage'            },
+        },
         body:  { it: 'In un ambiente curato e confortevole, Claudia si prenderà cura dei nostri ospiti con un massaggio rilassante o decontratturante, direttamente in struttura.', en: 'In a carefully furnished and comfortable space, Claudia will take care of you with a relaxing or decontracting massage, directly on site.' },
       },
       gallery: [
@@ -98,7 +104,7 @@ function defaultContent() {
       hero: {
         image:    'immagini/miele.jpg',
         label:    { it: 'Galleria · Laterina Pergine Valdarno', en: 'Gallery · Laterina Pergine Valdarno' },
-        title:    '<em>Le Carpanelle</em>',
+        title:    { before: '', accent: 'Le Carpanelle', after: '' },
         subtitle: { it: 'La nostra azienda in immagini!', en: 'Photogallery' },
       },
       items: [

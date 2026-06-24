@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+const INPUT_CLS = 'w-full px-2.5 py-1.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white';
+const INPUT_ACCENT_CLS = 'w-full px-2.5 py-1.5 border border-amber-300 rounded-lg text-sm italic focus:outline-none focus:ring-2 focus:ring-amber-400 bg-amber-50';
+
 // Bilingual tab switcher — wraps any field that has IT and EN variants.
 // Usage:
 //   <BilingualInput label="Sottotitolo hero" value={data.subtitle} onChange={v => set({...data, subtitle: v})} />
@@ -39,6 +42,72 @@ export function BilingualInput({ label, value = {}, onChange, placeholder }) {
         placeholder={placeholder}
         className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white"
       />
+    </div>
+  );
+}
+
+// ── TitleParts: 3 plain-text inputs that build "before <em>accent</em> after"
+// Used inside TitleField and BilingualTitle; value = { before, accent, after }
+function TitleParts({ value = {}, onChange }) {
+  const set = patch => onChange({ ...value, ...patch });
+  const preview = [
+    value.before?.trim(),
+    value.accent?.trim() ? `[${value.accent.trim()}]` : '',
+    value.after?.trim(),
+  ].filter(Boolean).join(' ');
+
+  return (
+    <div className="space-y-2">
+      <div className="grid grid-cols-3 gap-2">
+        <div>
+          <label className="text-xs text-slate-500 mb-1 block">Prima</label>
+          <input type="text" value={value.before ?? ''} onChange={e => set({ before: e.target.value })}
+            placeholder="es. Le" className={INPUT_CLS} />
+        </div>
+        <div>
+          <label className="text-xs text-amber-600 font-semibold mb-1 block">In corsivo</label>
+          <input type="text" value={value.accent ?? ''} onChange={e => set({ accent: e.target.value })}
+            placeholder="es. Carpanelle" className={INPUT_ACCENT_CLS} />
+        </div>
+        <div>
+          <label className="text-xs text-slate-500 mb-1 block">Dopo</label>
+          <input type="text" value={value.after ?? ''} onChange={e => set({ after: e.target.value })}
+            placeholder="es. B&B" className={INPUT_CLS} />
+        </div>
+      </div>
+      {preview && (
+        <p className="text-xs text-slate-400">
+          Anteprima: {value.before?.trim() && <span>{value.before.trim()} </span>}
+          {value.accent?.trim() && <em className="text-amber-600 not-italic font-semibold">{value.accent.trim()}</em>}
+          {value.after?.trim() && <span> {value.after.trim()}</span>}
+        </p>
+      )}
+    </div>
+  );
+}
+
+// Non-bilingual title (same in IT and EN)
+export function TitleField({ label, value = {}, onChange }) {
+  return (
+    <div>
+      <label className="block text-sm font-medium text-slate-700 mb-2">{label}</label>
+      <TitleParts value={value} onChange={onChange} />
+    </div>
+  );
+}
+
+// Bilingual title — tabs + TitleParts per language
+export function BilingualTitle({ label, value = {}, onChange }) {
+  const [lang, setLang] = useState('it');
+  const current = value[lang] ?? {};
+  const set = patch => onChange({ ...value, [lang]: { ...current, ...patch } });
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-2">
+        <label className="text-sm font-medium text-slate-700">{label}</label>
+        <Tabs lang={lang} onChange={setLang} />
+      </div>
+      <TitleParts value={current} onChange={set} />
     </div>
   );
 }

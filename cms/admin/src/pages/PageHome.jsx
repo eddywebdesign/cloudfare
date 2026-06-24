@@ -3,7 +3,7 @@ import { Plus, Trash2 } from 'lucide-react';
 import api from '../api/client.js';
 import PageShell from '../components/PageShell.jsx';
 import ImagePicker from '../components/ImagePicker.jsx';
-import { BilingualInput, BilingualTextarea } from '../components/LangTabs.jsx';
+import { BilingualInput, BilingualTextarea, TitleField } from '../components/LangTabs.jsx';
 
 function Field({ label, value, onChange }) {
   return (
@@ -77,7 +77,7 @@ export default function PageHome() {
           value={data.hero?.eyebrow}
           onChange={v => setHero({ eyebrow: v })}
         />
-        <Field
+        <TitleField
           label="Titolo principale (uguale in IT e EN)"
           value={data.hero?.title}
           onChange={v => setHero({ title: v })}

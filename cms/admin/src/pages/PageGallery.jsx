@@ -3,7 +3,7 @@ import { Plus, Trash2, ChevronUp, ChevronDown } from 'lucide-react';
 import api from '../api/client.js';
 import PageShell from '../components/PageShell.jsx';
 import ImagePicker from '../components/ImagePicker.jsx';
-import { BilingualInput } from '../components/LangTabs.jsx';
+import { BilingualInput, TitleField } from '../components/LangTabs.jsx';
 
 const SPANS = [1, 2, 3];
 
@@ -71,7 +71,8 @@ export default function PageGallery() {
         {/* Hero */}
         <Section title="Hero — immagine e testi" />
         <ImagePicker label="Immagine hero" value={data.hero?.image} onChange={url => setHero({ image: url })} />
-        <BilingualInput label="Etichetta" value={data.hero?.label}    onChange={v => setHero({ label: v })} />
+        <BilingualInput label="Etichetta" value={data.hero?.label}      onChange={v => setHero({ label: v })} />
+        <TitleField     label="Titolo (uguale IT e EN)" value={data.hero?.title} onChange={v => setHero({ title: v })} />
         <BilingualInput label="Sottotitolo" value={data.hero?.subtitle} onChange={v => setHero({ subtitle: v })} />
 
         {/* Gallery grid */}
