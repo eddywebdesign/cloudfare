@@ -19,9 +19,11 @@ GITHUB_OWNER  = "eddywebdesign"
 GITHUB_REPO   = "cloudfare"
 R2_PUBLIC_URL = "https://pub-497db6e0c76145839776213c776e157c.r2.dev"
 
-# ── Route: intercetta /api/* sul dominio Pages ────────────────────────────────
-# Attivare nel Dashboard → Worker → Settings → Triggers → Routes
-# oppure decommentare qui dopo aver collegato la zona DNS lecarpanelle.it
-# [[routes]]
-# pattern = "www.lecarpanelle.it/api/*"
-# zone_name = "lecarpanelle.it"
+# ── Routes: intercetta /api/* su entrambi i domini ───────────────────────────
+[[routes]]
+pattern   = "www.lecarpanelle.it/api/*"
+zone_name = "lecarpanelle.it"
+
+[[routes]]
+pattern   = "lecarpanelle.it/api/*"
+zone_name = "lecarpanelle.it"
