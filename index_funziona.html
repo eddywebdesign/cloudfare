@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<script>if(location.pathname.startsWith('/cms/'))location.replace('/cms/');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Azienda Agricola Le Carpanelle – Dario Presenti | Olio, Miele e B&B Arezzo</title>
-<meta name="description" content="Azienda Agricola Le Carpanelle ad Arezzo: produciamo olio extravergine d'oliva, miele artigianale e ortaggi biologici. Soggiorna nel nostro Claudia B&B a Laterina Pergine Valdarno, nel cuore della Toscana.">
-<meta name="keywords" content="Azienda agricola Arezzo, miele biologico, olio extravergine, B&B Laterina Pergine Valdarno, agriturismo Toscana, Le Carpanelle, Claudia B&B, Valdarno">
+<title>Azienda Agricola Le Carpanelle -Dario Presenti</title>
+<meta name="description" content="Azienda agricola a Arezzo: miele, olio e B&B.">
+<meta name="keywords" content="Azienda agricola Arezzo, miele biologico, olio extravergine, B&B Pergine Valdarno, agriturismo Toscana, Le Carpanelle">
 <meta name="author" content="Azienda Agricola Le Carpanelle">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.lecarpanelle.it/">
@@ -17,6 +16,7 @@
     <meta property="og:url" content="https://www.lecarpanelle.it/">
     <meta property="og:site_name" content="Azienda Agricola Le Carpanelle">
     <meta property="og:locale" content="it_IT">
+    <!-- Asegúrate de que la imagen sea de alta calidad (mínimo 1200x630px) -->
     <meta property="og:image" content="https://www.lecarpanelle.it/immagini/logo.png">
 
     <!-- Twitter Card -->
@@ -24,11 +24,6 @@
     <meta name="twitter:title" content="Azienda Agricola Le Carpanelle">
     <meta name="twitter:description" content="Miele, olio e B&B a Arezzo. Scopri la bellezza della Toscana con noi.">
     <meta name="twitter:image" content="https://www.lecarpanelle.it/immagini/logo.png">
-
-    <!-- hreflang for bilingual site -->
-    <link rel="alternate" hreflang="it" href="https://www.lecarpanelle.it/">
-    <link rel="alternate" hreflang="en" href="https://www.lecarpanelle.it/#en">
-    <link rel="alternate" hreflang="x-default" href="https://www.lecarpanelle.it/">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://www.lecarpanelle.it/immagini/favicon.png">
@@ -633,17 +628,6 @@ body {
   .mobile-lang-switcher span { color: rgba(255,255,255,0.25); }
 
   /* RESPONSIVE */
-  /* TABLET — reduce oversized padding so 2-column sections aren't cramped between 901-1100px */
-  @media (max-width: 1100px) and (min-width: 901px) {
-    .intro-text { padding: 4rem 2.5rem; }
-    .bb-text { padding: 4rem 2.5rem; }
-    .contatti-info { padding: 3.5rem 2.5rem; }
-    .bb-intro-text { padding: 3.5rem 2.5rem; }
-    .massage-text { padding: 2.5rem 2.5rem; }
-    .services { padding: 4rem 1.5rem; }
-    .reviews { padding: 4rem 1.5rem; }
-  }
-
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -791,48 +775,6 @@ body {
     }
   }
 
-  /* SCROLL TO TOP BUTTON */
-  #scroll-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 998;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    line-height: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s, transform 0.25s;
-  }
-  #scroll-top.visible {
-    opacity: 0.55;
-    visibility: visible;
-  }
-  #scroll-top:hover {
-    opacity: 1;
-    transform: translateY(-4px);
-  }
-  #scroll-top svg {
-    width: 42px;
-    height: 42px;
-    display: block;
-    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.12));
-  }
-  #scroll-top .st-circle {
-    transition: fill 0.25s, stroke 0.25s;
-  }
-  #scroll-top .st-arrow {
-    transition: stroke 0.25s;
-  }
-  #scroll-top:hover .st-circle {
-    fill: var(--gold);
-  }
-  #scroll-top:hover .st-arrow {
-    stroke: var(--white);
-  }
-
 </style>
 </head>
 <body>
@@ -866,7 +808,6 @@ body {
       data-it="Galleria"
       data-en="Gallery">Gallery</a>
  </li>
-    </ul>
   <!-- Contatti -->
     <a href="#" onclick="event.preventDefault(); showPage('contatti', 'Contatti')" class="nav-book" data-it="Contattaci" data-en="Book now">Book now</a>
     <div class="lang-switcher">
@@ -883,11 +824,11 @@ body {
 <!-- MOBILE NAV DRAWER -->
 <div class="mobile-nav-drawer" id="mobile-drawer">
   <button class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close">✕</button>
-  <a onclick="showPage('home')" data-it="Home" data-en="Home">Home</a>
-  <a onclick="scrollToSection('servizi')" data-it="I Nostri Prodotti" data-en="Our Products">Our Products</a>
-  <a onclick="showPage('bb-page')"><em>Claudia </em>B&amp;B</a>
-  <a onclick="showPage('gallery')" data-it="Galleria" data-en="Gallery">Gallery</a>
-  <a onclick="showPage('contatti')" data-it="Contattaci" data-en="Book now">Book now</a>
+  <a onclick="showPage('home'); toggleMobileNav()" data-it="Home" data-en="Home">Home</a>
+  <a onclick="showPage('home'); scrollToSection('servizi'); toggleMobileNav()" data-it="I Nostri Prodotti" data-en="Our Products">Our Products</a>
+  <a onclick="showPage('bb-page'); toggleMobileNav()">B&amp;B <em>Claudia</em></a>
+  <a onclick="showPage('gallery'); toggleMobileNav()" data-it="Galleria" data-en="Gallery">Gallery</a>
+  <a onclick="showPage('contatti'); toggleMobileNav()" data-it="Contattaci" data-en="Contact">Contact</a>
   <div class="mobile-lang-switcher">
     <button id="mbtn-it" onclick="setLang('it'); document.getElementById('mbtn-it').classList.add('active'); document.getElementById('mbtn-en').classList.remove('active');">ITA</button>
     <span>|</span>
@@ -900,13 +841,13 @@ body {
 
 <!-- HERO SLIDER -->
 <section class="hero">
-  <div class="slide slide-1 active" data-cms-img="home.hero.slide1"></div>
-  <div class="slide slide-2" data-cms-img="home.hero.slide2"></div>
-  <div class="slide slide-3" data-cms-img="home.hero.slide3"></div>
+  <div class="slide slide-1 active"></div>
+  <div class="slide slide-2"></div>
+  <div class="slide slide-3"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow" data-cms-field="home.hero.eyebrow" data-it="Laterina Pergine Valdarno · Arezzo · Toscana" data-en="Laterina Pergine Valdarno · Arezzo · Tuscany">Laterina Pergine Valdarno · Arezzo · Tuscany</p>
-    <h1 class="hero-title" data-cms-field="home.hero.title">Le <em>Carpanelle</em></h1>
-    <p class="hero-sub" data-cms-field="home.hero.subtitle" data-it="Olio, Miele, Ortaggi ed Ospitalità nel cuore del Valdarno" data-en="Olive Oil, Honey, Vegetables & Hospitality in the heart of the Valdarno">Olive Oil, Honey, Vegetables & Hospitality in the heart of the Valdarno</p>
+    <p class="hero-eyebrow" data-it="Laterina Pergine Valdarno · Arezzo · Toscana" data-en="Laterina Pergine Valdarno · Arezzo · Tuscany">Laterina Pergine Valdarno · Arezzo · Tuscany</p>
+    <h1 class="hero-title">Le <em>Carpanelle</em></h1>
+    <p class="hero-sub" data-it="Olio, Miele, Ortaggi ed Ospitalità nel cuore del Valdarno" data-en="Olive Oil, Honey, Vegetables & Hospitality in the heart of the Valdarno">Olive Oil, Honey &amp; Hospitality in the heart of the Valdarno</p>
     <span class="hero-cta" onclick="scrollToSection('benvenuto')" data-it="Scopri di più" data-en="Discover more">Discover more</span>
   </div>
   <div class="hero-dots">
@@ -922,7 +863,7 @@ body {
     <p class="section-label" data-it="Benvenuti" data-en="Welcome">Welcome</p>
     <h2 class="section-title" data-it="Un angolo di <em>Toscana</em><br>autentica" data-en="A corner of <em>authentic</em><br>Tuscany">A corner of <em>authentic</em><br>Tuscany</h2>
     <div class="divider"></div>
-    <p class="section-body" data-it="L'Azienda Agricola Le Carpanelle sorge sulle colline di Laterina Pergine Valdarno, in provincia di Arezzo. Con passione e rispetto per la tradizione, produciamo olio extravergine d'oliva, miele artigianale ed ortaggi. Disponiamo di due camere nel Claudia B&B ed un servizio per massaggi corpo." data-en="Az. Agricola Le Carpanelle is nestled in the hills of Laterina Pergine Valdarno, in the province of Arezzo. With passion and respect for tradition, we produce extra virgin olive oil, artisan honey and vegetables. Welcome guests at Claudia B&B.">Az. Agricola Le Carpanelle is nestled in the hills of Laterina Pergine Valdarno, in the province of Arezzo. With passion and respect for tradition, we produce extra virgin olive oil, artisan honey and vegetables. Welcome guests at Claudia B&amp;B.</p>
+    <p class="section-body" data-it="L'Azienda Agricola Le Carpanelle sorge sulle colline di Laterina Pergine Valdarno, in provincia di Arezzo. Con passione e rispetto per la tradizione, produciamo olio extravergine d'oliva, miele artigianale ed ortaggi. Disponiamo di due camere nel Claudia B&B ed un servizio per massaggi corpo." data-en="Az. Agricola Le Carpanelle is nestled in the hills of Laterina Pergine Valdarno, in the province of Arezzo. With passion and respect for tradition, we produce extra virgin olive oil, artisan honey and vegetables. Welcome guests at Claudia B&B.">Az. Agricola Le Carpanelle is nestled in the hills of Laterina Pergine Valdarno, in the province of Arezzo. With passion and respect for tradition, we produce extra virgin olive oil, artisan honey and vegetables. Welcome guests at B&amp;B Claudia.</p>
     <div class="divider"></div>
     <p class="section-body" data-it="Ogni prodotto nasce dall'amore per questa terra: l'olio porta con sé i profumi degli ulivi del Valdarno, il miele raccoglie i fiori selvatici delle nostre colline. Amiamo la stagionalità e da noi tutti gli ortaggi sono di nostra produzione. Nelle nostre comode camere pulizia ed ordine regnano sovrani. Se si vuole si può richiedere un massaggio rilassante direttamente in struttura!" data-en="Every product is born from love for this land: our olive oil carries the scent of ancient Valdarno olive trees, while our honey gathers wild flowers from the surrounding hills. We embrace seasonality — all vegetables are homegrown. We also offer two comfortable double rooms and relaxing massages on site.">Every product is born from love for this land: our olive oil carries the scent of ancient Valdarno olive trees, while our honey gathers wild flowers from the surrounding hills. We embrace seasonality — all vegetables are homegrown. We also offer two comfortable double rooms and relaxing massages on site.</p>
   </div>
@@ -958,7 +899,7 @@ body {
       <div class="service-bg rooms-bg"></div>
       <div class="service-content">
         <p class="service-number">03</p>
-        <h3 class="service-name" data-it="Claudia B&amp;B" data-en="Claudia B&amp;B">Claudia B&amp;B</h3>
+        <h3 class="service-name" data-it="Claudia B&amp;B" data-en="Claudia B&amp;B">Claudia B&amp;B Claudia</h3>
         <p class="service-desc" data-it="Due camere accoglienti immerse nel verde del Valdarno. Colazione con i nostri prodotti, silenzio e aria pulita. Coccólati con un massaggio rilassante di Claudia, direttamente in struttura." data-en="Two cosy rooms surrounded by the green Valdarno countryside. Breakfast with our own produce, peace and fresh air. Treat yourself to a relaxing massage with Claudia — right here on site.">Two cosy rooms surrounded by the green Valdarno countryside. Breakfast with our own produce, peace and fresh air. Treat yourself to a relaxing massage with Claudia — right here on site.</p>
         <span class="service-link" onclick="showPage('bb-page')" data-it="Scopri il B&B →" data-en="Discover B&B →">Discover B&B →</span>
       </div>
@@ -972,7 +913,6 @@ body {
     <p class="section-label" data-it="Cosa dicono di noi" data-en="What our guests say">What our guests say</p>
     <h2 class="section-title" style="font-size: clamp(2rem,3vw,3rem); text-align:center;" data-it="Le loro <em>esperienze</em>" data-en="Their <em>experiences</em>">Their <em>experiences</em></h2>
   </div>
-<!-- CMS:REVIEWS_START -->
   <div class="reviews-grid">
     <div class="review-card">
       <div class="review-quote">"</div>
@@ -996,7 +936,6 @@ body {
       <p class="review-source">Google</p>
     </div>
   </div>
-<!-- CMS:REVIEWS_END -->
   <div class="reviews-cta">
     <a href="https://www.google.com/maps/place/Claudia+B%26B" target="_blank" rel="noopener" data-it="Leggi su Google" data-en="Read on Google">Read on Google</a>
     <a href="https://www.facebook.com/profile.php?id=100054376487585" target="_blank" rel="noopener" data-it="Leggi su Facebook" data-en="Read on Facebook">Read on Facebook</a>
@@ -1010,8 +949,8 @@ body {
   <!-- Hero — full viewport, nav overlays -->
   <div class="contatti-hero">
     <div class="contatti-hero-text">
-      <p class="section-label" data-cms-field="contatti.hero.label" data-it="Dove siamo" data-en="Find us">Find us</p>
-      <h1 data-cms-field="contatti.hero.title" data-it="<em>Contatti</em> e Mappa" data-en="<em>Contact</em> & Map"><em>Contact</em> &amp; Map</h1>
+      <p class="section-label" data-it="Dove siamo" data-en="Find us">Find us</p>
+      <h1 data-it="<em>Contatti</em> e Mappa" data-en="<em>Contact</em> & Map"><em>Contact</em> &amp; Map</h1>
     </div>
   </div>
 
@@ -1079,9 +1018,9 @@ body {
   <!-- Hero — full viewport, nav overlays like homepage -->
   <div class="bb-page-hero">
     <div class="bb-page-hero-text">
-      <p class="section-label" data-cms-field="bb.hero.label" data-it="Soggiorno · Laterina Pergine Valdarno" data-en="Stay · Laterina Pergine Valdarno">Stay · Laterina Pergine Valdarno</p>
-      <h1 data-cms-field="bb.hero.title"><em>Claudia</em> B&B</h1>
-      <p data-cms-field="bb.hero.subtitle" data-it="Due camere nel cuore del Valdarno Toscano" data-en="Two rooms in the heart of the Tuscan Valdarno">Two rooms in the heart of the Tuscan Valdarno</p>
+      <p class="section-label" data-it="Soggiorno · Laterina Pergine Valdarno" data-en="Stay · Laterina Pergine Valdarno">Stay · Laterina Pergine Valdarno</p>
+      <h1>B&amp;B <em>Claudia</em></h1>
+      <p data-it="Due camere nel cuore del Valdarno Toscano" data-en="Two rooms in the heart of the Tuscan Valdarno">Two rooms in the heart of the Tuscan Valdarno</p>
     </div>
   </div>
 
@@ -1137,13 +1076,28 @@ body {
         <div class="bb-feature-icon">🛏️</div>
         <h3 data-it="Due Camere Doppie" data-en="Two Double Rooms">Two Double Rooms</h3>
         <p data-it="Ambienti curati e confortevoli, con biancheria di qualità e attenzione ai dettagli.<br><br>" data-en="Carefully furnished and comfortable spaces, with quality linen and attention to detail.">Carefully furnished and comfortable spaces, with quality linen and attention to detail.</p>
-      <p data-cms-field="bb.prices" data-it="Prezzi soggiorno: camera singola 35€ (senza colazione, disponibile a 5€); Camera doppia 60€ (colazione inclusa). Pagamenti POS accettati." data-en="Accommodation prices: Single room €35 (without breakfast, available at €5); Double room €60 (breakfast included). Card payments accepted.">Accommodation prices: Single room €35 (without breakfast, available at €5); Double room €60 (breakfast included). Card payments accepted.</p>
-      <div style="display: flex; gap: 10px; align-items: center; margin: 12px 0 0 0;">
-        <i class="fa-brands fa-cc-visa" style="font-size: 32px; color: #1A1F71;"></i>
-        <i class="fa-brands fa-cc-mastercard" style="font-size: 32px; color: #EB001B;"></i>
-        <i class="fa-brands fa-apple-pay" style="font-size: 32px; color: #000;"></i>
-        <i class="fa-brands fa-google-pay" style="font-size: 32px; color: #4285F4;"></i>
-      </div>
+      <p  data-it="Prezzi soggiorno: <br>camera singola 35€ (senza prima colazione - costo 5€);<br> Camera doppia 60€ (inclusa prima colazione); <br> Pagamenti POS accettati! <br>" data-en="Accommodation prices:<br>  Single room €35 (without breakfast - €5);<br>  Double room €60 (including breakfast);<br> Online payments accepted! <br>">Accommodation prices:  Single room €35 (without breakfast - €5)  Double room €60 (including breakfast) POS payments accepted (Visa, Mastercard, Apple Pay, Google Pay, etc.)
+        <!-- Iconos de pagos con código hexadecimal -->
+
+            <div style="display: flex; gap: 10px; align-items: center; margin: 20px 0;">
+              <!-- Iconos de pagos con Font Awesome (sin fondo) -->
+              <div style="display: flex; gap: 10px; align-items: center; margin-left: 10px;">
+
+                <!-- Visa (Rojo oficial) -->
+                <i class="fa-brands fa-cc-visa" style="font-size: 32px; color: #1A1F71;"></i>
+
+                <!-- Mastercard -->
+                <i class="fa-brands fa-cc-mastercard" style="font-size: 32px; color: #EB001B;"></i>
+
+                <!-- Apple Pay -->
+                <i class="fa-brands fa-apple-pay" style="font-size: 32px; color: #000;"></i>
+
+                <!-- Google Pay -->
+                <i class="fa-brands fa-google-pay" style="font-size: 32px; color: #4285F4;"></i>
+
+              </div>
+
+            </div></p>
       </div>
     </div>
 
@@ -1152,9 +1106,9 @@ body {
       <div class="massage-image" role="img" aria-label="Massaggio rilassante"></div>
       <div class="massage-text">
         <p class="section-label" data-it="Benessere in struttura" data-en="Wellness on site">Wellness on site</p>
-        <h2 class="section-title" data-cms-field="bb.massage.title" data-it="Massaggio <em>rilassante</em> e decontratturante" data-en="Relaxing &amp; <em>decontracting</em> massage">Relaxing &amp; <em>decontracting</em> massage</h2>
+        <h2 class="section-title" data-it="Massaggio <em>rilassante</em> e decontratturante" data-en="Relaxing &amp; <em>decontracting</em> massage">Relaxing &amp; <em>decontracting</em> massage</h2>
         <div class="divider"></div>
-        <p class="section-body" data-cms-field="bb.massage.body" data-it="In un ambiente curato e confortevole, Claudia si prenderà cura dei nostri ospiti con un massaggio rilassante o decontratturante, direttamente in struttura." data-en="In a carefully furnished and comfortable space, Claudia will take care of you with a relaxing or decontracting massage, directly on site.">In a carefully furnished and comfortable space, Claudia will take care of you with a relaxing or decontracting massage, directly on site.</p>
+        <p class="section-body" data-it="In un ambiente curato e confortevole, Claudia si prenderà cura dei nostri ospiti con un massaggio rilassante o decontratturante, direttamente in struttura." data-en="In a carefully furnished and comfortable space, Claudia will take care of you with a relaxing or decontracting massage, directly on site.">In a carefully furnished and comfortable space, Claudia will take care of you with a relaxing or decontracting massage, directly on site.</p>
         <div style="margin-top:2rem;">
           <a href="https://api.whatsapp.com/send?phone=393311474808&text=Hello,%20I%20would%20like%20to%20book%20a%20massage%20at%20Le%20Carpanelle" target="_blank" rel="noopener" class="bb-book" data-it="Prenota un massaggio" data-en="Book a massage">Book a massage</a>
         </div>
@@ -1165,9 +1119,9 @@ body {
 
   <!-- Photo gallery strip — last element of the page -->
   <div class="bb-gallery">
-    <div class="bb-gal-img bb-gal-1" data-cms-img="bb.gallery.1"></div>
-    <div class="bb-gal-img bb-gal-2" data-cms-img="bb.gallery.2"></div>
-    <div class="bb-gal-img bb-gal-3" data-cms-img="bb.gallery.3"></div>
+    <div class="bb-gal-img bb-gal-1"></div>
+    <div class="bb-gal-img bb-gal-2"></div>
+    <div class="bb-gal-img bb-gal-3"></div>
   </div>
 
 </div><!-- end page-bb -->
@@ -1179,9 +1133,9 @@ body {
   <!-- Hero Section (Opcional, mantener si tienes un título aquí) -->
   <div class="gg-page-hero">
     <div class="bb-page-hero-text">
-      <p style="color: var(--white);" class="section-label" data-cms-field="gallery.hero.label" data-it="Galleria · Laterina Pergine Valdarno" data-en="Gallery · Laterina Pergine Valdarno">Gallery · Laterina Pergine Valdarno</p>
-      <h1 style="color: var(--white);" data-cms-field="gallery.hero.title"><em>Le Carpanelle</em></h1>
-      <p style="font-weight:400;" data-cms-field="gallery.hero.subtitle" data-it="La nostra azienda in <em>immagini!</em> " data-en="Photogallery">Photogallery</p>
+      <p style="color: var(--white);" class="section-label" data-it="Galleria · Laterina Pergine Valdarno" data-en="Gallery · Laterina Pergine Valdarno">Gallery · Laterina Pergine Valdarno</p>
+      <h1 style="color: var(--white);"><em>Le Carpanelle</em></h1>
+      <p style="font-weight:400;" data-it="La nostra azienda in <em>immagini!</em> " data-en="Photogallery">Photogallery</p>
     </div>
     <!-- Si necesitas título aquí, puedes agregarlo, pero el código original estaba vacío -->
   </div>
@@ -1194,209 +1148,221 @@ body {
     </div>
 
     <!-- GALLERY GRID -->
-<!-- CMS:GALLERY_GRID_START -->
 <div class="gallery-grid">
 
+<!-- Item 1 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/olive.jpg');"></div>
 <h3 class="gallery-title" data-it="Le Nostre Olive" data-en="Our Olive Groves">Our Olive Groves</h3>
 </div>
 
+<!-- Item 2 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/miele_1.jpg');"></div>
 </div>
 
+<!-- Item 3 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/cartello_B&B.jpg');"></div>
 <h3 class="gallery-title" data-it="Miele Artigianale" data-en="Artisan Honey">Artisan Honey</h3>
 </div>
 
+<!-- Item 4 -->
 <div class="gallery-item span-3">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/vista_giardino.jpg');"></div>
 <h3 class="gallery-title" data-it="L'azienda" data-en="Our Farm">Our Farm</h3>
 </div>
 
+<!-- Item 5 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/Olio_bottiglia_etichetta.jpg');"></div>
 <h3 class="gallery-title" data-it="Olio artigianale" data-en="Artisan Oil">Artisan Oil</h3>
 </div>
 
+<!-- Item 6 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/cartello_escursioni.jpg');"></div>
 <h3 class="gallery-title" data-it="Animale dell'azienda" data-en="Valdarno Landscape">Valdarno Landscape</h3>
 </div>
 
+<!-- Item 7 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/pomodori.jpg');"></div>
-<h3 class="gallery-title" data-it="Escursioni" data-en="Hiking">Hiking</h3>
+<h3 class="gallery-title" data-it="Escursioni" header-data-it="Escursioni" header-data-en="Hiking">Hiking</h3>
 </div>
 
+<!-- Item 8 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/capre.jpg');"></div>
 <h3 class="gallery-title" data-it="L'azienda" data-en="Our Farm">Our Farm</h3>
 </div>
 
+<!-- Item 9 -->
 <div class="gallery-item span-3">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/massaggio_2.jpg');"></div>
 <h3 class="gallery-title" data-it="Castagne" data-en="Chestnuts">Chestnuts</h3>
 </div>
 
+<!-- Item 10 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/Claudia-B&B_6.jpg');"></div>
 <h3 class="gallery-title" data-it="L'Orto Bio" data-en="The Organic Garden">The Organic Garden</h3>
 </div>
 
+
+
+<!-- Item 12 -->
 <div class="gallery-item span-3">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/Claudia-B&B_8.jpg');"></div>
 <h3 class="gallery-title" data-it="L'Orto bio" data-en="The Organic Garden">The Organic Garden</h3>
 </div>
 
+<!-- Item 13 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/api_sciame.jpg');"></div>
 <h3 class="gallery-title" data-it="Valdarno" data-en="Valdarno Landscape">Valdarno Landscape</h3>
 </div>
 
+<!-- Item 14 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/massaggio_1.jpg');"></div>
 <h3 class="gallery-title" data-it="Massaggio" data-en="Massage">Massage</h3>
 </div>
-
+<!-- Item 11 -->
 <div class="gallery-item span-3">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/vista_retro.jpg');"></div>
 <h3 class="gallery-title" data-it="L'azienda" data-en="Our Farm">Our Farm</h3>
 </div>
-
+<!-- Item 15 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/miele_scolatura.jpg');"></div>
 <h3 class="gallery-title" data-it="Miele" data-en="Honey">Honey</h3>
 </div>
-
+<!-- Item 17 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/orto.jpg');"></div>
-<h3 class="gallery-title" data-it="L'orto" data-en="The Garden">The Garden</h3>
+<h3 class="gallery-title" data-it="Massaggio" data-en="Massage">Massage</h3>
 </div>
-
+<!-- Item 18 -->
 <div class="gallery-item span-3">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/ulivi.jpg');"></div>
-<h3 class="gallery-title" data-it="Ulivi" data-en="Olive Trees">Olive Trees</h3>
+<h3 class="gallery-title" data-it="Massaggio" data-en="Massage">Massage</h3>
 </div>
-
+<!-- Item 19 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/castagne.jpg');"></div>
-<h3 class="gallery-title" data-it="Castagne" data-en="Chestnuts">Chestnuts</h3>
+<h3 class="gallery-title" data-it="Massaggio" data-en="Massage">Massage</h3>
 </div>
-
+<!-- Item 20 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/miele_etichetta.jpg');"></div>
-<h3 class="gallery-title" data-it="Miele" data-en="Honey">Honey</h3>
+<h3 class="gallery-title" data-it="Massaggio" data-en="Massage">Massage</h3>
 </div>
-
+<!-- Item 21 -->
 <div class="gallery-item span-3">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/Claudia-B&B_tavolo.jpg');"></div>
 </div>
-
+<!-- Item 22 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/meloni.jpg');"></div>
 </div>
-
+<!-- Item 23 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/piselli.jpg');"></div>
 </div>
-
+<!-- Item 24 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/capre_2.jpg');"></div>
 </div>
-
+<!-- Item 25 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/melenzana.jpg');"></div>
 </div>
-
+<!-- Item 26 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/broccoli.jpg');"></div>
 </div>
-
+<!-- Item 27 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/funghi.jpg');"></div>
 </div>
-
+<!-- Item 28 -->
 <div class="gallery-item span-3">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/vista_exterior1.jpg');"></div>
 </div>
-
+<!-- Item 29 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/fagiolini.jpg');"></div>
 </div>
-
+<!-- Item 30 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/vista_exterior_2.jpg');"></div>
 </div>
-
+<!-- Item 31 -->
 <div class="gallery-item span-3">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/vista_esterna.jpg');"></div>
 </div>
-
+<!-- Item 32 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/aglio.jpg');"></div>
 </div>
-
+<!-- Item 33 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/casina_api.jpg');"></div>
 </div>
-
+<!-- Item 34 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/fave&pecorino.jpg');"></div>
 </div>
-
+<!-- Item 35 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/patate.jpg');"></div>
 </div>
-
+<!-- Item 36 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/Dario_orto.jpg');"></div>
 </div>
-
+<!-- Item 37 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/miele_etichetta_tris.jpg');"></div>
 </div>
-
+<!-- Item 38 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/pomodoro.jpg');"></div>
 </div>
-
+<!-- Item 39 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/Claudia_uva.jpg');"></div>
 </div>
-
+<!-- Item 40 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/aglione.jpg');"></div>
 </div>
-
+<!-- Item 41 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/cane.jpg');"></div>
 </div>
-
+<!-- Item 42 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/olive_casette.jpg');"></div>
 </div>
-
+<!-- Item 43 -->
 <div class="gallery-item span-3">
 <div class="gallery-bg" style="background-image: url('immagini/ClaudiaB&B3.jpg');"></div>
 </div>
-
+<!-- Item 46 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/B&BClaudia_9.jpg');"></div>
 </div>
-
+<!-- Item 44 -->
 <div class="gallery-item span-1">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/vista_exterior_orto.jpg');"></div>
 </div>
-
+<!-- Item 45 -->
 <div class="gallery-item span-2">
 <div class="gallery-bg" style="background-image: url('immagini/galleria/uva.jpg');"></div>
 </div>
-
 </div> <!--- end gallery-grid -->
-<!-- CMS:GALLERY_GRID_END -->
 <div>
 <p style="font-size: 1rem; color: #3a3228; font-weight: 400; letter-spacing: 0.1em; margin-top: 1rem; text-align: center;" data-it="... la storia <em>continua!</em> " data-en="...to be continue!">...to be continue!</p>
 </div>
@@ -1528,7 +1494,7 @@ body {
       <div class="footer-nav-links">
         <a onclick="showPage('home'); scrollToSection('benvenuto')" style="cursor:pointer;" data-it="Chi siamo" data-en="About us">About us</a>
         <a onclick="showPage('home'); scrollToSection('servizi')" style="cursor:pointer;" data-it="I nostri prodotti" data-en="Our products">Our products</a>
-        <a onclick="showPage('bb-page')" style="cursor:pointer;">Claudia B&amp;B</a>
+        <a onclick="showPage('bb-page')" style="cursor:pointer;">B&amp;B Claudia</a>
         <a onclick="showPage('home'); scrollToSection('recensioni')" style="cursor:pointer;" data-it="Recensioni" data-en="Reviews">Reviews</a>
         <a onclick="showPage('gallery')" style="cursor:pointer;" data-it="Galleria" data-en="Gallery">Gallery</a>
         <a onclick="showPage('contatti')" style="cursor:pointer;" data-it="Contatti & Mappa" data-en="Contact & Map">Contact &amp; Map</a>
@@ -1537,44 +1503,15 @@ body {
   </div>
 
   <div class="footer-bottom">
-    <span>© 2026 Az. Agricola Le Carpanelle · P.I. 02030470518 · CIN IT051042C1ATWFFRUJ<br>by EDL</span>
+    <span>© 2026 Az. Agricola Le Carpanelle · P.I. 02030470518 · CIN IT051042C1ATWFFRUJ · by EDL</span>
         <a href="#" onclick="event.preventDefault(); showPage('pp-page', 'Privacy Policy')" data-it="Privacy Policy" data-en="Privacy Policy">Privacy Policy</a>
   </div>
 </footer>
-
-<!-- SCROLL TO TOP BUTTON -->
-<button id="scroll-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <circle class="st-circle" cx="12" cy="12" r="11" fill="var(--white)" stroke="var(--gold)" stroke-width="0.9"/>
-    <path class="st-arrow" d="M12 15V9"   stroke="var(--gold)" stroke-width="1.2"/>
-    <path class="st-arrow" d="M8.5 12l3.5-3.5 3.5 3.5" stroke="var(--gold)" stroke-width="1.2"/>
-  </svg>
-</button>
 
 <script>
   // ===== NAV SCROLL =====
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
-
-  // ===== SCROLL-TOP: avoid footer overlap =====
-  (function () {
-    const btn = document.getElementById('scroll-top');
-    const footer = document.querySelector('footer');
-    const defaultBottom = 32;
-    function adjustBtn() {
-      if (!btn || !footer) return;
-      const footerTop = footer.getBoundingClientRect().top;
-      const gap = window.innerHeight - footerTop;
-      if (gap <= 0) {
-        btn.style.bottom = defaultBottom + 'px';
-      } else {
-        // Cap: button never goes higher than 45% from viewport bottom
-        const cap = Math.floor(window.innerHeight * 0.45);
-        btn.style.bottom = Math.min(gap + defaultBottom, cap) + 'px';
-      }
-    }
-    window.addEventListener('scroll', adjustBtn, { passive: true });
-  })();
   // On hero pages nav starts transparent; scrolled class is only added on scroll
 
   // ===== HAMBURGER MENU =====
@@ -1628,9 +1565,7 @@ body {
       window.scrollTo(0, 0);
 
       // 4. Manejar el Título visual (H2)
-      // La home tiene su propio h2.section-title con HTML enriquecido (em, data-it, data-en)
-      // que el sistema de idioma gestiona — no se toca.
-      const oldTitle = activePage.querySelector('.dynamic_title');
+      const oldTitle = activePage.querySelector('.dynamic_title'); // Nota: corregido el selector si usas guion bajo o guion medio
       if (oldTitle) oldTitle.remove();
 
       let finalTitle = titleText;
@@ -1645,18 +1580,16 @@ body {
           finalTitle = defaults[pageId] || pageId;
       }
 
-      // Solo inyectar/modificar h2 en páginas internas, nunca en home
-      if (pageId !== 'home') {
-          let h2 = activePage.querySelector('h2');
-          if (h2) {
-              h2.textContent = finalTitle;
-          } else {
-              h2 = document.createElement('h2');
-              h2.className = 'dynamic_title';
-              h2.textContent = finalTitle;
-              const content = activePage.querySelector('.description-privacy') || activePage.querySelector('.container') || activePage;
-              content.prepend(h2);
-          }
+      let h2 = activePage.querySelector('h2');
+      if (h2) {
+          h2.textContent = finalTitle;
+      } else {
+          h2 = document.createElement('h2');
+          h2.className = 'dynamic_title';
+          h2.textContent = finalTitle;
+          // Asegúrate de que el estilo se aplique
+          const content = activePage.querySelector('.description-privacy') || activePage.querySelector('.container') || activePage;
+          content.prepend(h2);
       }
 
       // 5. Manejar el menú (transparente/opaco)
@@ -1702,11 +1635,6 @@ body {
           const target = document.getElementById(id);
           if (target) {
               target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-          // Close mobile nav if open
-          const drawer = document.getElementById('mobile-drawer');
-          if (drawer && drawer.classList.contains('open')) {
-              toggleMobileNav();
           }
       }, 80);
   }
@@ -1782,7 +1710,6 @@ body {
     }
   });
 
-  // Sync html[lang] attribute for SEO and accessibility
   document.documentElement.lang = l;
 }
 </script>
