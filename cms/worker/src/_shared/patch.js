@@ -4,6 +4,17 @@ function esc(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+// Attribute region of an opening tag. I valori di data-it/data-en contengono HTML
+// (<em>…</em>) per progetto: il language switcher li applica con innerHTML.
+// Lo scanner deve quindi attraversare le stringhe quotate senza fermarsi ai ">"
+// che contengono, altrimenti il tag catturato risulta troncato a metà attributo.
+const ATTRS = `(?:"[^"]*"|'[^']*'|[^>"'])*?`;
+
+// Le virgolette doppie romperebbero l'attributo; "<" e ">" vanno invece preservati.
+function escAttr(v) {
+  return String(v ?? '').replace(/"/g, '&quot;');
+}
+
 // Assembles a title from { before, accent, after } → "before <em>accent</em> after"
 // Accepts legacy plain strings too (backward compat).
 function buildTitle(t) {
@@ -26,13 +37,13 @@ function buildTitle(t) {
 function patchTextField(html, field, valueIt, valueEn) {
   // Capture the tag name so the closing tag backreference is exact
   const re = new RegExp(
-    `(<(h[1-6]|p|span)(?:[^>]*?)data-cms-field="${esc(field)}"(?:[^>]*?)>)[\\s\\S]*?(<\\/\\2>)`,
+    `(<(h[1-6]|p|span)${ATTRS}data-cms-field="${esc(field)}"${ATTRS}>)[\\s\\S]*?(<\\/\\2>)`,
     'i'
   );
   return html.replace(re, (_, openTag, _tag, closeTag) => {
     let tag = openTag;
-    if (tag.includes('data-it=')) tag = tag.replace(/data-it="[^"]*"/, `data-it="${valueIt}"`);
-    if (tag.includes('data-en=')) tag = tag.replace(/data-en="[^"]*"/, `data-en="${valueEn}"`);
+    if (tag.includes('data-it=')) tag = tag.replace(/data-it="[^"]*"/, `data-it="${escAttr(valueIt)}"`);
+    if (tag.includes('data-en=')) tag = tag.replace(/data-en="[^"]*"/, `data-en="${escAttr(valueEn)}"`);
     return `${tag}${valueEn}${closeTag}`;
   });
 }
@@ -69,7 +80,7 @@ function patchReviews(html, reviews) {
   const cards = reviews.map(r => `    <div class="review-card">
       <div class="review-quote">"</div>
       <div class="review-stars">★★★★★</div>
-      <p class="review-text" data-it="${r.text_it}" data-en="${r.text_en}">${r.text_en}</p>
+      <p class="review-text" data-it="${escAttr(r.text_it)}" data-en="${escAttr(r.text_en)}">${r.text_en}</p>
       <p class="review-author">${r.author}</p>
       <p class="review-source">${r.source}</p>
     </div>`).join('\n');
@@ -84,7 +95,7 @@ function patchReviews(html, reviews) {
 function patchGalleryGrid(html, items) {
   const blocks = items.map(item => {
     const titleAttr = (item.title_it || item.title_en)
-      ? `\n<h3 class="gallery-title" data-it="${item.title_it || ''}" data-en="${item.title_en || ''}">${item.title_en || ''}</h3>`
+      ? `\n<h3 class="gallery-title" data-it="${escAttr(item.title_it || '')}" data-en="${escAttr(item.title_en || '')}">${item.title_en || ''}</h3>`
       : '';
     return `<div class="gallery-item span-${item.span}">
 <div class="gallery-bg" style="background-image: url('${item.image}');"></div>${titleAttr}
