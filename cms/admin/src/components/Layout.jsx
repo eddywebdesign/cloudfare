@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback, createContext, useContext } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { ArrowUp } from 'lucide-react';
 import Sidebar from './Sidebar.jsx';
 import Toast from './Toast.jsx';
 import { useAuth } from '../contexts/AuthContext.jsx';
@@ -12,12 +13,15 @@ const IDLE_MS = 30 * 60 * 1000; // 30 minutes
 export default function Layout() {
   const [toast, setToast]       = useState(null);
   const [idleWarn, setIdleWarn] = useState(false); // 1-minute warning before logout
-  const showToast = (message, type = 'success') => setToast({ message, type });
+  const showToast = (message, type = 'success', detail) => setToast({ message, type, detail });
 
   const { logout } = useAuth();
   const navigate   = useNavigate();
+  const location   = useLocation();
   const timer      = useRef(null);
   const warnTimer  = useRef(null);
+  const mainRef    = useRef(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const doLogout = useCallback(() => {
     logout();
@@ -44,12 +48,40 @@ export default function Layout() {
     };
   }, [resetTimer]);
 
+  // Pulsante "torna su" — utile soprattutto nella Galleria con molte foto.
+  useEffect(() => {
+    const el = mainRef.current;
+    if (!el) return;
+    const onScroll = () => setShowScrollTop(el.scrollTop > 400);
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Riparti dall'alto ad ogni cambio pagina.
+  useEffect(() => {
+    mainRef.current?.scrollTo({ top: 0 });
+    setShowScrollTop(false);
+  }, [location.pathname]);
+
+  const scrollToTop = () => mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+
   return (
     <ToastCtx.Provider value={showToast}>
       <div className="flex h-screen bg-carp-cream">
         <Sidebar />
-        <main className="flex-1 overflow-y-auto">
+        <main ref={mainRef} className="flex-1 overflow-y-auto relative">
           <Outlet />
+
+          {showScrollTop && (
+            <button
+              type="button"
+              onClick={scrollToTop}
+              title="Torna all'inizio della pagina"
+              className="fixed bottom-6 right-6 z-40 p-3 bg-carp-gold hover:bg-carp-brown text-white rounded-full shadow-lg transition-colors"
+            >
+              <ArrowUp size={18} />
+            </button>
+          )}
         </main>
       </div>
 
@@ -70,6 +102,7 @@ export default function Layout() {
         <Toast
           message={toast.message}
           type={toast.type}
+          detail={toast.detail}
           onClose={() => setToast(null)}
         />
       )}

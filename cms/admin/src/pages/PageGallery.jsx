@@ -65,7 +65,7 @@ export default function PageGallery() {
   if (!data) return <div className="p-6 text-sm text-carp-muted">Caricamento…</div>;
 
   return (
-    <PageShell title="Galleria" subtitle="Hero e griglia fotografica" onSave={save}>
+    <PageShell title="Galleria" subtitle="Hero e griglia fotografica" onSave={save} publicPath="#Gallery">
       <div className="space-y-5">
 
         {/* Hero */}

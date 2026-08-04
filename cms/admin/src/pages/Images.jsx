@@ -29,9 +29,9 @@ export default function Images() {
         const r = await api.post('/images/upload', form);
         setImages(prev => [r.data, ...prev]);
       }
-      showToast(`${files.length} immagine/i caricata/e`);
+      showToast(`✓ ${files.length} immagine/i caricata/e con successo.`);
     } catch (err) {
-      showToast(err.response?.data?.error ?? 'Errore upload', 'error');
+      showToast('Il caricamento non è riuscito. Controlla la connessione e riprova.', 'error', err.response?.data?.error);
     } finally {
       setUploading(false);
       e.target.value = '';
@@ -43,9 +43,9 @@ export default function Images() {
     try {
       await api.delete(`/images/${encodeURIComponent(key)}`);
       setImages(prev => prev.filter(i => i.key !== key));
-      showToast('Immagine eliminata');
+      showToast('✓ Immagine eliminata.');
     } catch {
-      showToast('Errore eliminazione', 'error');
+      showToast('Non è stato possibile eliminare l\'immagine. Riprova.', 'error');
     }
   };
 

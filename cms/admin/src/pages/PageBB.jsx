@@ -41,7 +41,7 @@ export default function PageBB() {
   if (!data) return <div className="p-6 text-sm text-carp-muted">Caricamento…</div>;
 
   return (
-    <PageShell title="Claudia B&B" subtitle="Hero, prezzi, massaggio e gallery strip" onSave={save}>
+    <PageShell title="Claudia B&B" subtitle="Hero, prezzi, massaggio e gallery strip" onSave={save} publicPath="#ClaudiaB&B">
       <div className="space-y-5">
 
         {/* Hero */}

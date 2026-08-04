@@ -54,7 +54,7 @@ export default function PageHome() {
   if (!data) return <div className="p-6 text-sm text-carp-muted">Caricamento…</div>;
 
   return (
-    <PageShell title="Homepage" subtitle="Hero slider e recensioni" onSave={save}>
+    <PageShell title="Homepage" subtitle="Hero slider e recensioni" onSave={save} publicPath="">
       <div className="space-y-5">
 
         {/* Hero images */}

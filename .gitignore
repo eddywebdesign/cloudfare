@@ -2,3 +2,4 @@
 cms/admin/node_modules/
 cms/dist/
 cms/worker/node_modules/
+cms/worker/.wrangler/

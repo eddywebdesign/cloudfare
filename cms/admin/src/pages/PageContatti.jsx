@@ -15,7 +15,7 @@ export default function PageContatti() {
   if (!data) return <div className="p-6 text-sm text-carp-muted">Caricamento…</div>;
 
   return (
-    <PageShell title="Contatti" subtitle="Immagine e testi dell'hero" onSave={save}>
+    <PageShell title="Contatti" subtitle="Immagine e testi dell'hero" onSave={save} publicPath="#Contatti">
       <div className="space-y-5">
         <ImagePicker label="Immagine hero" value={data.hero?.image} onChange={url => setHero({ image: url })} />
         <BilingualInput label="Etichetta sopra il titolo" value={data.hero?.label} onChange={v => setHero({ label: v })} />
